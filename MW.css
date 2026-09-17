@@ -124,7 +124,7 @@ section {
 .skill {
     grid-area: skill;
     flex-direction: center;
-    background-color:  white;
+    background-color:  red;
   }
 .move {
     grid-area: move;
