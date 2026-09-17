@@ -169,9 +169,10 @@
                     </div>
                 </section>
 
+                <input type="hidden" name="attr_tmmstatus" class="tmm-status" value="White">
                 <section class="tmm f-center">
                     <h3>TMM</h3>
-                    <div class="redtext">
+                    <div>
                         <h3><span name="attr_tmm"></span></h3>
                     </div>
                 </section>
@@ -314,7 +315,7 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max'], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max"], function(values) {
             
             let engineCrit = parseInt(values.enginecrit);
             let fcCrit = parseInt(values.fccritlevel);
@@ -350,8 +351,15 @@
             if (move === 0) {
                 movestatus = "Black";
             }
-
-
+            let tmmMax = values.tmm_max;
+            let tmm = Math.max(0,tmmMax - mpCrit);
+            let tmmstatus = "White";
+            if (tmm < tmmMax) {
+                tmmstatus = "Yellow";
+            }
+            if (tmm === 0) {
+                tmmstatus = "Red";
+            }
 
             setAttrs({
                 "engine1": engine1,
@@ -370,7 +378,8 @@
                 "heatstatus": heatstatus,
                 "move": move,
                 "movestatus": movestatus,
-
+                "tmm": tmm,
+                "tmmstatus": tmmstatus,
 
 
 

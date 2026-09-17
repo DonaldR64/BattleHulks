@@ -126,12 +126,13 @@ section {
     flex-direction: center;
     background-color:  white;
   }
+
 .move {
     grid-area: move;
     flex-direction: center;
     background-color:  white;
   }
-.heat h3{
+.move h3{
   color: black;
 }
 input[type="hidden"][value="Yellow"].move-status ~ .move {
@@ -152,6 +153,19 @@ input[type="hidden"][value="Black"].move-status ~ .move h3{
     flex-direction: center;
     background-color:  white;
   }
+.tmm h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].tmm-status ~ .tmm {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].tmm-status ~ .tmm {
+    background-color: red;
+}
+
+
+
+
 .heat {
     grid-area: heat;
     flex-direction: center;
