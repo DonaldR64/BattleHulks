@@ -144,7 +144,7 @@ section {
   color: white;
 }
 input[type="hidden"][value="White"].heat-status ~ .heat {
-    background-color: lightgreen;
+    background-color: green;
 }
 input[type="hidden"][value="Yellow"].heat-status ~ .heat {
     background-color: yellow;
@@ -158,7 +158,12 @@ input[type="hidden"][value="Red"].heat-status ~ .heat {
 input[type="hidden"][value="Black"].heat-status ~ .heat {
     background-color: black;
 }
-
+input[type="hidden"][value="Yellow"].heat-status ~ .heat h3{
+    color: black;
+}
+input[type="hidden"][value="Orange"].heat-status ~ .heat h3{
+    color: black;
+}
 
 
 .armour {
