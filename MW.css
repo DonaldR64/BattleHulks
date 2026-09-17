@@ -144,7 +144,7 @@ section {
   color: white;
 }
 input[type="hidden"][value="White"].heat-status ~ .heat {
-    background-color: white;
+    background-color: lightgreen;
 }
 input[type="hidden"][value="Yellow"].heat-status ~ .heat {
     background-color: yellow;
