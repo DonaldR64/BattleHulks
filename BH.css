@@ -30,13 +30,13 @@ main {
     width: 800px;
     height: 450px;
     grid-gap: 4px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:"info       stats"
-                        "info       stats"
-                        "structure  armour"
-                        "weapons    weapons"
-                        "weapons    weapons";
+    grid-template-areas:"info       info    stats       stats"
+                        "info       info    stats       stats"
+                        "structure  armour  equipment   equipment"
+                        "weapons    weapons weapons     weapons"
+                        "weapons    weapons weapons     weapons";
   }
 
 
@@ -130,6 +130,13 @@ section {
     flex-direction: center;
     background-color:  white;
   }
+
+.equipment {
+    grid-area: equipment;
+    flex-direction: center;
+    background-color:  white;
+  }
+
 
 
 .weapons {
