@@ -134,14 +134,11 @@ section {
 .heat h3{
   color: black;
 }
-input[type="hidden"][value="Red"].move-status ~ .move {
-    background-color: red;
+input[type="hidden"][value="Yellow"].move-status ~ .move {
+    background-color: yellow;
 }
 input[type="hidden"][value="Black"].move-status ~ .move {
     background-color: black;
-}
-input[type="hidden"][value="Red"].move-status ~ .move h3{
-    color: white;
 }
 input[type="hidden"][value="Black"].move-status ~ .move h3{
     color: white;
