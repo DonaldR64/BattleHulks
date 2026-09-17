@@ -167,8 +167,12 @@ section {
 
 .special {
     grid-area: special;
-    flex-direction: center;
-    background-color:  white;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(5,1fr);
+    background-color: white;
+    align-items: center;
   }
 
 
@@ -267,4 +271,68 @@ section {
 }
 .longinfo h3{
     color: darkred;
+}
+
+.specialtitle {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo1 {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo2 {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo3 {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo4 {
+  grid-column: 2/-1;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo5 {
+  grid-column: 1/2;
+  grid-row: 4/5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo6 {
+  grid-column: 2/-1;
+  grid-row: 4/5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo7 {
+  grid-column: 1/2;
+  grid-row: 5/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specialinfo8 {
+  grid-column: 2/-1;
+  grid-row: 5/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -177,8 +177,37 @@
 
 
                 <section class="special">
-                    <h3>Special Abilities/Equipment</h3>
-                    <h4><span name="attr_special"></span></h4>
+                    <div class="specialtitle">
+                        <h3>Special Abilities/Equipment</h3>
+                    </div>
+                    <div class="specialinfo1">
+                        <h4><span name="attr_special1"></span></h4>
+                    </div>
+                    <div class="specialinfo2">
+                        <h4><span name="attr_special2"></span></h4>
+                    </div>
+                    <div class="specialinfo3">
+                        <h4><span name="attr_special3"></span></h4>
+                    </div>
+                    <div class="specialinfo4">
+                        <h4><span name="attr_special4"></span></h4>
+                    </div>
+                    <div class="specialinfo5">
+                        <h4><span name="attr_special5"></span></h4>
+                    </div>
+                    <div class="specialinfo6">
+                        <h4><span name="attr_special6"></span></h4>
+                    </div>
+                    <div class="specialinfo7">
+                        <h4><span name="attr_special7"></span></h4>
+                    </div>
+                    <div class="specialinfo8">
+                        <h4><span name="attr_special8"></span></h4>
+                    </div>
+
+
+
+                    </div>
                 </section>
 
                 <section class="weapons">    
@@ -247,23 +276,8 @@
             let rows = Math.ceil(splits/4);
             let s;
             for (let i=0;i<8;i++) {
-                if (rows === 2) {
-                    s = splits(i) || " ";
-                    specials.push(s);
-                } else if (rows === 1) {
-                    if (i%2 === 0) {
-                        s = splits(i/2);
-                        specials.push(s);
-                    } else {
-                        specials.push(" ");
-                    }
-                }
-
-
-
+                specials[i] = splits[i] || " ";
             }
-
-
             setAttrs({
                 "sheetTab": "display",
                 "special1": specials[0];
