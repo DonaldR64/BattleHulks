@@ -14,26 +14,16 @@
 .mysheet {
     width: 830px;
     height: 480px;
+    background-image: url("https://files.d20.io/images/501266163/oy5qGhS1vXgcKes92nLztw/thumb.jpg?1789612219");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .attributes {
     padding: 15px 0px 0px 15px;
 }
 
-input[type="hidden"][name="attr_nation"] ~ .mysheet {
-    background-color: lightgray;
-}
-input[type="hidden"][name="attr_nation"][value="USA"] ~ .mysheet {
-    background-color: darkgreen;
-}
-input[type="hidden"][name="attr_nation"][value="Germany"] ~ .mysheet {
-    background-color: black;
-}
-input[type="hidden"][name="attr_nation"][value="Soviet"] ~ .mysheet {
-    background-color: red;
-}
-input[type="hidden"][name="attr_nation"][value="UK"] ~ .mysheet {
-    background-color: #0A2065;
-}
+
 
 main {
     display: grid;
