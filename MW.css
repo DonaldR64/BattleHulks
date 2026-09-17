@@ -35,7 +35,7 @@ main {
     grid-template-areas:"info       info    info    info    pic       pic"
                         "stats      stats   defense defense pic       pic"
                         "weapons    weapons weapons weapons pic       pic"
-                        "weapons    weapons weapons weapons pic       pic"
+                        "weapons    weapons weapons weapons criticals criticals"
                         "special    special special special criticals criticals"
                         "special    special special special criticals criticals";
   }
@@ -128,9 +128,15 @@ section {
   
 .weapons {
     grid-area: weapons;
-    flex-direction: center;
-    background-color:  white;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    background-color: white;
+    align-items: center;
   }
+
+
 
 .special {
     grid-area: special;
@@ -162,4 +168,52 @@ section {
     justify-self: center;
 }
   
-
+.weaponinfo {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shorttitle {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.medtitle {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.longtitle {
+  grid-column: 3/-1;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shortinfo {
+  grid-column: 1/2;
+  grid-row: 3/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.medinfo {
+  grid-column: 2/3;
+  grid-row: 3/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.longinfo {
+  grid-column: 3/-1;
+  grid-row: 3/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
