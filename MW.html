@@ -269,21 +269,20 @@
         getAttrs(["special"], function(values) {
             let splits = values.special.split(',');
             let specials = [];
-            let rows = Math.ceil(splits/4);
-            let s;
             for (let i=0;i<8;i++) {
-                specials[i] = splits[i] || " ";
+                let s = splits[i] || " ";
+                specials.push(s);
             }
             setAttrs({
                 "sheetTab": "display",
-                "special1": specials[0];
-                "special2": specials[1];
-                "special3": specials[2];
-                "special4": specials[3];
-                "special5": specials[4];
-                "special6": specials[5];
-                "special7": specials[6];
-                "special8": specials[7];
+                "special1": specials[0],
+                "special2": specials[1],
+                "special3": specials[2],
+                "special4": specials[3],
+                "special5": specials[4],
+                "special6": specials[5],
+                "special7": specials[6],
+                "special8": specials[7],
 
 
 
