@@ -337,7 +337,7 @@ section {
   grid-gap: 1px;
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 1;
-  text-align: center;
+  text-align: left;
   align-items: center;
   padding: 3px;
 }
@@ -347,7 +347,7 @@ section {
   grid-gap: 1px;
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
-  text-align: center;
+  text-align: left;
   align-items: center;
   padding: 3px;
 }
@@ -357,7 +357,7 @@ section {
   grid-gap: 1px;
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
-  text-align: center;
+  text-align: left;
   align-items: center;
   padding: 3px;
 }
@@ -367,7 +367,7 @@ section {
   grid-gap: 1px;
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
-  text-align: center;
+  text-align: left;
   align-items: center;
   padding: 3px;
 }

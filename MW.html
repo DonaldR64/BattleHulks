@@ -310,7 +310,7 @@
 
     on("sheet:opened", function() {
         getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel'], function(values) {
-            let engine1 = parseInt(values.engineCrit) === 1 ? ●:○;
+            let engine1 = parseInt(values.enginecrit) === 1 ? ●:○;
             let fc1 = parseInt(values.fccritlevel) >= 1 ? ●:○;
             let fc2 = parseInt(values.fccritlevel) >= 2 ? ●:○;
             let fc3 = parseInt(values.fccritlevel) >= 3 ? ●:○;
