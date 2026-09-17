@@ -114,20 +114,10 @@ section {
 .info {
     grid-area: info;
     flex-direction: center;
+    background-color:  white;
   }
 
-.info h1 {
-  text-align: center;
-  color: white;
-}
-.info h2 {
-  text-align: center;
-  color: white;
-}
-.info h3 {
-  text-align: center;
-  color: white;
-}
+
 
 
 .skill {
