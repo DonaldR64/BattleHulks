@@ -51,13 +51,13 @@
                 <option value=1>Heroic</option>
                 <option value=0>Legendary</option>
             </select>
-            <label>Move:</label><input type="number" name="attr_move">
+            <label>Move Max:</label><input type="number" name="attr_move_max">
             <label for="attr_movespecial">Special Movement:</label>
             <select name="attr_movespecial">
                 <option value="">Nil</option>
                 <option value="j">Jump</option>
             </select>            
-            <label>TMM:</label><input type="number" name="attr_tmm">
+            <label>TMM Max:</label><input type="number" name="attr_tmm_max">
         </div>
         <div class="col">
             <h3>Weapons</h3>
@@ -76,6 +76,7 @@
             <h3>Sample Settings</h3>
             <label>Current Armour:</label><input type="number" name="attr_armour">
             <label>Current Structure:</label><input type="number" name="attr_structure">
+
             <label for="attr_heat">Current Heat:</label>
             <select name="attr_heat">
                 <option value="0">0</option>
@@ -130,11 +131,21 @@
                     </div>
                 </section>
 
-                <section class="stats f-center">
-                    <h4>Skill: <span name="attr_skill"></span></h4>
-                    <h4>Move: <span name="attr_move"></span> <span name="attr_movespecial"></span></h4>
-                    <h4>Overheat: <span name="attr_overheat"></span></h4>
+                <section class="move f-center">
+                    <h3>Move</h3>
+                    <h3><span name="attr_move"></span></h3>
                 </section>
+
+                <section class="skill f-center">
+                    <h3>Skill</h3>
+                    <h3><span name="attr_skill"></span></h3>
+                </section>
+
+                <section class="tmm f-center">
+                    <h3>TMM</h3>
+                    <h3><span name="attr_tmm"></span></h3>
+                </section>
+
 
                 <section class="heat f-center">
                     <h3>Heat</h3>
@@ -154,17 +165,20 @@
 
 
                 <section class="special">
-                    <h2><u>Special Abilities/Equipment</u></h2>
+                    <h3>Special Abilities/Equipment</h3>
                     <h4><span name="attr_special"></span></h4>
                 </section>
 
                 <section class="weapons">    
                     <div class="weapontitle">
-                        <h2><u>Weapons</u></h2>
+                        <h3>Weapons</h3>
                     </div>
                     <div class="weaponinfo">
                         <h4><span name="attr_weapons"></span></h4>
                     </div>      
+                    <div class="overheat">
+                        <h4>Overheat: <span name="attr_overheat"></span></h4>
+                    </div>   
                     <div class="shorttitle">
                         <h3>Short [+0]</h3>
                     </div>
