@@ -224,3 +224,13 @@ section {
   justify-content: center;
   align-items: center;
 }
+
+.shortinfo h3{
+    color: darkred;
+}
+.medinfo h3{
+    color: darkred;
+}
+.longinfo h3{
+    color: darkred;
+}
