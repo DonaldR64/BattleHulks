@@ -86,20 +86,36 @@
                 <option value="3">3</option>
                 <option value="S">S</option>
             </select>
-            <h3>Criticals</h3>
-            <label>Engine:</label><input type="checkbox" name="attr_enginecrit" value="1">   
-            <label>FC1:</label><input type="checkbox" name="attr_fc1crit" value="1">   
-            <label>FC2:</label><input type="checkbox" name="attr_fc2crit" value="1">   
-            <label>FC3:</label><input type="checkbox" name="attr_fc3crit" value="1">   
-            <label>FC4:</label><input type="checkbox" name="attr_fc4crit" value="1">   
-            <label>MP1:</label><input type="checkbox" name="attr_mp1crit" value="1">   
-            <label>MP2:</label><input type="checkbox" name="attr_mp2crit" value="1">   
-            <label>MP3:</label><input type="checkbox" name="attr_mp3crit" value="1">   
-            <label>MP4:</label><input type="checkbox" name="attr_mp4crit" value="1">   
-            <label>WP1:</label><input type="checkbox" name="attr_wp1crit" value="1">   
-            <label>WP2:</label><input type="checkbox" name="attr_wp2crit" value="1">   
-            <label>WP3:</label><input type="checkbox" name="attr_wp3crit" value="1">   
-            <label>WP4:</label><input type="checkbox" name="attr_wp4crit" value="1">   
+            <h3>Criticals</h3> 
+             <label for="attr_enginecrit">Engine Crit Level:</label>
+            <select name="attr_enginecrit">
+                <option value=0>0</option>
+                <option value=1>1</option>
+            </select>
+             <label for="attr_fccritlevel">FC Crit Level:</label>
+            <select name="attr_fccritlevel">
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+            </select>
+             <label for="attr_mpcritlevel">MP Crit Level:</label>
+            <select name="attr_mpcritlevel">
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+            </select>
+             <label for="attr_wpcritlevel">WP Crit Level:</label>
+            <select name="attr_wpcritlevel">
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+            </select>
         </div>
 
         <div class="col">
@@ -244,11 +260,34 @@
                 </section>
 
                 <section class="criticals">
-                    <h3>Critical Hits</h3>
-                    <h4>Engine (+1 Heat/Firing): </h4>
-                    <h4>Fire Control (+2): </h4>
-                    <h4>Movement (-1): </h4>
-                    <h4>Weapon: (-1 Dam)</h4>
+                    <div class="crittitle">
+                        <h3>Critical Hits</h3>
+                    </div>
+                    <div class = "enginecrit">
+                        <h4>Engine (+1 Heat/Firing): </h4>
+                        <span name="attr_engine1"></span>
+                    </div>
+                    <div class="fccrit">
+                        <h4>Fire Control (+2): </h4>
+                        <span name="attr_fc1"></span>
+                        <span name="attr_fc2"></span>
+                        <span name="attr_fc3"></span>
+                        <span name="attr_fc4"></span>
+                    </div>
+                    <div class="mpcrit">
+                        <h4>Movement (-1): </h4>
+                        <span name="attr_mp1"></span>
+                        <span name="attr_mp2"></span>
+                        <span name="attr_mp3"></span>
+                        <span name="attr_mp4"></span>
+                    </div>
+                    <div class="wpcrit">
+                        <h4>Weapon: (-1 Dam)</h4>
+                        <span name="attr_wp1"></span>
+                        <span name="attr_wp2"></span>
+                        <span name="attr_wp3"></span>
+                        <span name="attr_wp4"></span>
+                    </div>
                 </section>
             </main>
         </div>
@@ -270,7 +309,40 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["special"], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel'], function(values) {
+            let engine1 = parseInt(values.engineCrit) === 1 ? ●:○;
+            let fc1 = parseInt(values.fccritlevel) >= 1 ? ●:○;
+            let fc2 = parseInt(values.fccritlevel) >= 2 ? ●:○;
+            let fc3 = parseInt(values.fccritlevel) >= 3 ? ●:○;
+            let fc4 = parseInt(values.fccritlevel) === 4 ? ●:○;
+            let mp1 = parseInt(values.mpcritlevel) >= 1 ? ●:○;
+            let mp2 = parseInt(values.mpcritlevel) >= 2 ? ●:○;
+            let mp3 = parseInt(values.mpcritlevel) >= 3 ? ●:○;
+            let mp4 = parseInt(values.mpcritlevel) === 4 ? ●:○;
+            let wp1 = parseInt(values.wpcritlevel) >= 1 ? ●:○;
+            let wp2 = parseInt(values.wpcritlevel) >= 2 ? ●:○;
+            let wp3 = parseInt(values.wpcritlevel) >= 3 ? ●:○;
+            let wp4 = parseInt(values.wpcritlevel) === 4 ? ●:○;
+
+
+            setAttrs({
+                "engine1": engine1,
+                "fc1": fc1,
+                "fc2": fc2,
+                "fc3": fc3,
+                "fc4": fc4,
+                "mp1": mp1,
+                "mp2": mp2,
+                "mp3": mp3,
+                "mp4": mp4,
+                "wp1": wp1,
+                "wp2": wp2,
+                "wp3": wp3,
+                "wp4": wp4,
+
+            });
+
+
 
         });
     });
