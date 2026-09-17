@@ -190,12 +190,7 @@ section {
     align-items: center;
     background-color: white;
   }
-  
-.pic > img {
-    flex-shrink: 0;
-    width: 100%;
-    height: auto;
-}
+
   
 .weapontitle {
   grid-column: 1/-1;
