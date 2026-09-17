@@ -200,12 +200,36 @@ input[type="hidden"][value="Black"].heat-status ~ .heat h3{
     flex-direction: center;
     background-color:  white;
   }
-  
+.armour h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].armour-status ~ .armour {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].armour-status ~ .armour {
+    background-color: red;
+}
+
+
+
+
+
 .structure {
     grid-area: structure;
     flex-direction: center;
     background-color:  white;
   }
+.structure h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].structure-status ~ .structure {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].structure-status ~ .structure {
+    background-color: red;
+}
+
+
 
 
 .weapons {

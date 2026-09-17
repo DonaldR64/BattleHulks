@@ -185,6 +185,7 @@
                     </div>
                 </section>
 
+                <input type="hidden" name="attr_armourstatus" class="armour-status" value="White">
                 <section class="armour">
                     <h3>Armour</h3>
                     <div class="redtext">
@@ -192,6 +193,7 @@
                     </div>
                 </section>
 
+                <input type="hidden" name="attr_structurestatus" class="structure-status" value="White">
                 <section class="structure">
                     <h3>Structure</h3>
                     <div class="redtext">
@@ -315,7 +317,7 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max","damShort_max","damMed_max","damLong_max"], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max","damShort_max","damMed_max","damLong_max","armour","armour_max","structure","structure_max"], function(values) {
             
             let engineCrit = parseInt(values.enginecrit);
             let fcCrit = parseInt(values.fccritlevel);
@@ -369,7 +371,25 @@
             let damMed = Math.max(0,damMedMax - wpCrit);
             let damLong = Math.max(0,damLongMax - wpCrit);
 
+            let armour = parseInt(values.armour);
+            let armourMax = parseInt(values.armour_max);
+            let structure = parseInt(values.structure);
+            let structureMax = parseInt(values.structure_max);
 
+            let armourStatus = "White";
+            if (armour < armourMax) {
+                armourStatus = "Yellow";
+            } 
+            if (armour === 0 && armourMax > 0) {
+                armourStatus = "Red";
+            }
+            let structureStatus = "White";
+            if (structure < structureMax && structure > (structureMax/2)) {
+                structureStatus = "Yellow";
+            } 
+            if (structure < structureMax/2) {
+                structureStatus = "Red";
+            } 
 
 
             setAttrs({
@@ -394,7 +414,8 @@
                 "damShort": damShort,
                 "damMed": damMed,
                 "damLong": damLong,
-
+                "armourstatus": armourStatus,
+                "structurestatus": structureStatus,
 
             });
 
