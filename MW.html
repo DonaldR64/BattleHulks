@@ -175,7 +175,7 @@
                     </div>
                 </section>
 
-                <input type="hidden" name="attr_heatstatus" class="heat-status" value="White">
+                <input type="hidden" name="attr_heatstatus" class="heat-status" value="Green">
                 <section class="heat f-center">
                     <h3>Heat</h3>
                     <div class="redtext">
@@ -329,11 +329,11 @@
             let wp3 = parseInt(values.wpcritlevel) >= 3 ? "🟥":"🟩";
             let wp4 = parseInt(values.wpcritlevel) === 4 ? "🟥":"🟩";
 
-            let heatstatus = "White";
-            if (heat === 1) {heatstatus = "Yellow"};
-            if (heat === 2) {heatstatus = "Orange"};
-            if (heat === 3) {heatstatus = "Red"};
-            if (heat === 4) {heatstatus = "Black"};
+            let heatstatus = "Green";
+            if (values.heat === 1) {heatstatus = "Yellow"};
+            if (values.heat === 2) {heatstatus = "Orange"};
+            if (values.heat === 3) {heatstatus = "Red"};
+            if (values.heat === 4) {heatstatus = "Black"};
 
 
             setAttrs({

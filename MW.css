@@ -143,7 +143,7 @@ section {
 .heat h3{
   color: white;
 }
-input[type="hidden"][value="White"].heat-status ~ .heat {
+input[type="hidden"][value="Green"].heat-status ~ .heat {
     background-color: green;
 }
 input[type="hidden"][value="Yellow"].heat-status ~ .heat {
