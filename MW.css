@@ -6,6 +6,7 @@
 
 /* show the selected tab */
 .sheet-tabstoggle[value="input"] ~ div.sheet-input,
+.sheet-tabstoggle[value="specials"] ~ div.sheet-specials,
 .sheet-tabstoggle[value="display"] ~ div.sheet-display {
     display: block;
 }
@@ -329,4 +330,89 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.spheader {
+  text-align: center;
+}
+
+.spbody {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(auto-fill,1fr);
+}
+
+.sp1 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp2 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp3 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp4 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp5 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp6 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp7 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.sp8 {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
 }

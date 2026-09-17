@@ -2,6 +2,7 @@
 <div>
     <button type="action" name="act_input">Input</button>
     <button type="action" name="act_display">Display</button>
+    <button type="action" name="act_specials">Specials</button>
 </div>
 
 <div class="sheet-input">
@@ -254,15 +255,54 @@
     </div>    
 </div>
 
-
-
+<div class="sheet-specials mysheet">
+    <div class="attributes">
+        <div class="spheader">
+            <h2>Special Abilities & Equipment</h2>
+        </div>
+        <div class="spbody">
+            <div class="sp1">
+                <span style="font-weight:bold;" name="attr_special1"></span>
+                <span name="attr_spec1Text"></span>
+            </div>
+            <div class="sp2">
+                <span style="font-weight:bold;" name="attr_special2"></span>
+                <span name="attr_spec2Text"></span>
+            </div>
+            <div class="sp3">
+                <span style="font-weight:bold;" name="attr_special3"></span>
+                <span name="attr_spec3Text"></span>
+            </div>
+            <div class="sp4">
+                <span style="font-weight:bold;" name="attr_special4"></span>
+                <span name="attr_spec4Text"></span>
+            </div>
+            <div class="sp5">
+                <span style="font-weight:bold;" name="attr_special5"></span>
+                <span name="attr_spec5Text"></span>
+            </div>
+            <div class="sp6">
+                <span style="font-weight:bold;" name="attr_special6"></span>
+                <span name="attr_spec6Text"></span>         
+            </div>
+            <div class="sp7">
+                <span style="font-weight:bold;" name="attr_special7"></span>
+                <span name="attr_spec7Text"></span>        
+            </div>
+            <div class="sp8">
+                <span style="font-weight:bold;" name="attr_special8"></span>
+                <span name="attr_spec8Text"></span>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
 
 <script type="text/worker">
-    const buttonlist = ["input","display"];
+    const buttonlist = ["input","display","specials"];
     buttonlist.forEach(button => {
         on(`clicked:${button}`, function() {
             setAttrs({
