@@ -103,7 +103,10 @@ section {
   color: darkred;
 }
 
-
+.redtext h3{
+  text-align: center;
+  color: darkred;
+}
 
 /*------------- Section-specific CSS -------------*/
 
