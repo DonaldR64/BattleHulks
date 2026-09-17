@@ -154,6 +154,7 @@
                     </div>
                 </section>
 
+                <input type="hidden" name="attr_movestatus" class="move-status" value="White">
                 <section class="move f-center">
                     <h3>Move</h3>
                     <div class="redtext">
@@ -175,7 +176,7 @@
                     </div>
                 </section>
 
-                <input type="hidden" name="attr_heatstatus" class="heat-status" value="Green">
+                <input type="hidden" name="attr_heatstatus" class="heat-status" value="White">
                 <section class="heat f-center">
                     <h3>Heat</h3>
                     <div class="redtext">
@@ -275,7 +276,7 @@
                         <span name="attr_fc1"></span>
                     </div>
                     <div class="mpcrit">
-                        <h4>Movement (-1): </h4>
+                        <h4>Movement (1/2): </h4>
                         <span name="attr_mp4"></span>
                         <span name="attr_mp3"></span>
                         <span name="attr_mp2"></span>
@@ -313,27 +314,43 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat'], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max'], function(values) {
             
-            let engine1 = parseInt(values.enginecrit) === 1 ? "🟥":"🟩";
-            let fc1 = parseInt(values.fccritlevel) >= 1 ? "🟥":"🟩";
-            let fc2 = parseInt(values.fccritlevel) >= 2 ? "🟥":"🟩";
-            let fc3 = parseInt(values.fccritlevel) >= 3 ? "🟥":"🟩";
-            let fc4 = parseInt(values.fccritlevel) === 4 ? "🟥":"🟩";
-            let mp1 = parseInt(values.mpcritlevel) >= 1 ? "🟥":"🟩";
-            let mp2 = parseInt(values.mpcritlevel) >= 2 ? "🟥":"🟩";
-            let mp3 = parseInt(values.mpcritlevel) >= 3 ? "🟥":"🟩";
-            let mp4 = parseInt(values.mpcritlevel) === 4 ? "🟥":"🟩";
-            let wp1 = parseInt(values.wpcritlevel) >= 1 ? "🟥":"🟩";
-            let wp2 = parseInt(values.wpcritlevel) >= 2 ? "🟥":"🟩";
-            let wp3 = parseInt(values.wpcritlevel) >= 3 ? "🟥":"🟩";
-            let wp4 = parseInt(values.wpcritlevel) === 4 ? "🟥":"🟩";
+            let engineCrit = parseInt(values.enginecrit);
+            let fcCrit = parseInt(values.fccritlevel);
+            let mpCrit = parseInt(values.mpcritlevel);
+            let wpCrit = parseInt(values.wpcritlevel);
 
-            let heatstatus = "Green";
+            let engine1 = engineCrit === 1 ? "🟥":"🟩";
+            let fc1 = fcCrit >= 1 ? "🟥":"🟩";
+            let fc2 = fcCrit >= 2 ? "🟥":"🟩";
+            let fc3 = fcCrit >= 3 ? "🟥":"🟩";
+            let fc4 = fcCrit === 4 ? "🟥":"🟩";
+            let mp1 = mpCrit >= 1 ? "🟥":"🟩";
+            let mp2 = mpCrit >= 2 ? "🟥":"🟩";
+            let mp3 = mpCrit >= 3 ? "🟥":"🟩";
+            let mp4 = mpCrit === 4 ? "🟥":"🟩";
+            let wp1 = wpCrit >= 1 ? "🟥":"🟩";
+            let wp2 = wpCrit >= 2 ? "🟥":"🟩";
+            let wp3 = wpCrit >= 3 ? "🟥":"🟩";
+            let wp4 = wpCrit === 4 ? "🟥":"🟩";
+
+            let heatstatus = "White";
             if (values.heat === "1") {heatstatus = "Yellow"};
             if (values.heat === "2") {heatstatus = "Orange"};
             if (values.heat === "3") {heatstatus = "Red"};
             if (values.heat === "S") {heatstatus = "Black"};
+
+            let moveMax = values.move_max;
+            let move = Math.max(0,moveMax - mpCrit);
+            let movestatus = "White";
+            if (move < moveMax) {
+                movestatus = "Yellow";
+            }
+            if (move === 0) {
+                movestatus = "Black";
+            }
+
 
 
             setAttrs({
@@ -351,6 +368,11 @@
                 "wp3": wp3,
                 "wp4": wp4,
                 "heatstatus": heatstatus,
+                "move": move,
+                "movestatus": movestatus,
+
+
+
 
             });
 

@@ -131,6 +131,25 @@ section {
     flex-direction: center;
     background-color:  white;
   }
+.heat h3{
+  color: black;
+}
+input[type="hidden"][value="Red"].move-status ~ .move {
+    background-color: red;
+}
+input[type="hidden"][value="Black"].move-status ~ .move {
+    background-color: black;
+}
+input[type="hidden"][value="Red"].move-status ~ .move h3{
+    color: white;
+}
+input[type="hidden"][value="Black"].move-status ~ .move h3{
+    color: white;
+}
+
+
+
+
 .tmm {
     grid-area: tmm;
     flex-direction: center;
@@ -139,12 +158,11 @@ section {
 .heat {
     grid-area: heat;
     flex-direction: center;
+    background-color: white;
+
   }
 .heat h3{
-  color: white;
-}
-input[type="hidden"][value="Green"].heat-status ~ .heat {
-    background-color: green;
+  color: black;
 }
 input[type="hidden"][value="Yellow"].heat-status ~ .heat {
     background-color: yellow;
@@ -158,11 +176,11 @@ input[type="hidden"][value="Red"].heat-status ~ .heat {
 input[type="hidden"][value="Black"].heat-status ~ .heat {
     background-color: black;
 }
-input[type="hidden"][value="Yellow"].heat-status ~ .heat h3{
-    color: black;
+input[type="hidden"][value="Red"].heat-status ~ .heat h3{
+    color: white;
 }
-input[type="hidden"][value="Orange"].heat-status ~ .heat h3{
-    color: black;
+input[type="hidden"][value="Black"].heat-status ~ .heat h3{
+    color: white;
 }
 
 
