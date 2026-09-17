@@ -33,10 +33,10 @@ main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:"info       info    info    pic       pic"
-                        "stats      stats   stats   pic       pic"
-                        "defense    defense defense pic       pic"
-                        "weapons    weapons weapons special   special"
-                        "weapons    weapons weapons criticals criticals";
+                        "stats      stats   defense   pic       pic"
+                        "weapons    weapons weapons pic       pic"
+                        "weapons    weapons weapons criticals criticals   "
+                        "special    special special criticals criticals";
   }
 
 
