@@ -193,8 +193,8 @@ section {
   
 .pic > img {
     flex-shrink: 0;
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    height: auto;
 }
   
 .weapontitle {
