@@ -286,6 +286,11 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
+
+.weaponinfo h3{
+  color: darkred;
+}
+
 .overheat {
   grid-column: 3/-1;
   grid-row: 2/3;
@@ -293,6 +298,12 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
+.overheat h3{
+  color: darkred;
+}
+
+
+
 .shorttitle {
   grid-column: 1/2;
   grid-row: 3/4;
