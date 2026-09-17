@@ -309,20 +309,24 @@
     });
 
     on("sheet:opened", function() {
+        setAttrs({sheetTab:"display"});
+    });
+
+    on("sheet:opened", function() {
         getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel'], function(values) {
-            let engine1 = parseInt(values.enginecrit) === 1 ? ●:○;
-            let fc1 = parseInt(values.fccritlevel) >= 1 ? ●:○;
-            let fc2 = parseInt(values.fccritlevel) >= 2 ? ●:○;
-            let fc3 = parseInt(values.fccritlevel) >= 3 ? ●:○;
-            let fc4 = parseInt(values.fccritlevel) === 4 ? ●:○;
-            let mp1 = parseInt(values.mpcritlevel) >= 1 ? ●:○;
-            let mp2 = parseInt(values.mpcritlevel) >= 2 ? ●:○;
-            let mp3 = parseInt(values.mpcritlevel) >= 3 ? ●:○;
-            let mp4 = parseInt(values.mpcritlevel) === 4 ? ●:○;
-            let wp1 = parseInt(values.wpcritlevel) >= 1 ? ●:○;
-            let wp2 = parseInt(values.wpcritlevel) >= 2 ? ●:○;
-            let wp3 = parseInt(values.wpcritlevel) >= 3 ? ●:○;
-            let wp4 = parseInt(values.wpcritlevel) === 4 ? ●:○;
+            let engine1 = parseInt(values.enginecrit) === 1 ? "●":"○";
+            let fc1 = parseInt(values.fccritlevel) >= 1 ? "●":"○";
+            let fc2 = parseInt(values.fccritlevel) >= 2 ? "●":"○";
+            let fc3 = parseInt(values.fccritlevel) >= 3 ? "●":"○";
+            let fc4 = parseInt(values.fccritlevel) === 4 ? "●":"○";
+            let mp1 = parseInt(values.mpcritlevel) >= 1 ? "●":"○";
+            let mp2 = parseInt(values.mpcritlevel) >= 2 ? "●":"○";
+            let mp3 = parseInt(values.mpcritlevel) >= 3 ? "●":"○";
+            let mp4 = parseInt(values.mpcritlevel) === 4 ? "●":"○";
+            let wp1 = parseInt(values.wpcritlevel) >= 1 ? "●":"○";
+            let wp2 = parseInt(values.wpcritlevel) >= 2 ? "●":"○";
+            let wp3 = parseInt(values.wpcritlevel) >= 3 ? "●":"○";
+            let wp4 = parseInt(values.wpcritlevel) === 4 ? "●":"○";
 
 
             setAttrs({
