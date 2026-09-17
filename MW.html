@@ -102,8 +102,15 @@
         </div>
 
         <div class="col">
-            <h3>Special [, separated]</h3>
-            <input type="text" name="attr_special">
+            <h3>Special Equipment and Abilities</h3>
+            <input type="text" name="attr_special1">
+            <input type="text" name="attr_special2">
+            <input type="text" name="attr_special3">
+            <input type="text" name="attr_special4">
+            <input type="text" name="attr_special5">
+            <input type="text" name="attr_special6">
+            <input type="text" name="attr_special7">
+            <input type="text" name="attr_special8">
         </div>
 
 
@@ -267,26 +274,7 @@
 
     on("sheet:opened", function() {
         getAttrs(["special"], function(values) {
-            let splits = values.special.split(',');
-            let specials = [];
-            for (let i=0;i<8;i++) {
-                let s = splits[i] || " ";
-                specials.push(s);
-            }
-            setAttrs({
-                "sheetTab": "display",
-                "special1": specials[0],
-                "special2": specials[1],
-                "special3": specials[2],
-                "special4": specials[3],
-                "special5": specials[4],
-                "special6": specials[5],
-                "special7": specials[6],
-                "special8": specials[7],
 
-
-
-            }); 
         });
     });
 
