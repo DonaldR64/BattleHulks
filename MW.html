@@ -64,9 +64,9 @@
             <h3>Weapons</h3>
             <label>Weapons:</label><input type="text" name="attr_weapons">
             <label>Overheat value:</label><input type="text" name="attr_overheat">
-            <label>Damage (Short):</label><input type="text" name="attr_damShort">
-            <label>Damage (Med):</label><input type="text" name="attr_damMed">
-            <label>Damage (Long):</label><input type="text" name="attr_damLong">
+            <label>Max Damage - Short Range:</label><input type="text" name="attr_damShort_max">
+            <label>Max Damage - Med Range:</label><input type="text" name="attr_damMed_max">
+            <label>Max Damage - Long Range:</label><input type="text" name="attr_damLong_max">
         </div>
         <div class="col">
             <h3>Defense</h3>
@@ -315,7 +315,7 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max"], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max","damShort_max","damMed_max","damLong_max"], function(values) {
             
             let engineCrit = parseInt(values.enginecrit);
             let fcCrit = parseInt(values.fccritlevel);
@@ -361,6 +361,17 @@
                 tmmstatus = "Red";
             }
 
+            let damShortMax = values.damShort_max || 0;
+            let damMedMax = values.damShort_max || 0;
+            let damLongMax = values.damLong_max || 0;
+
+            let damShort = Math.max(0,damShortMax - wpCrit);
+            let damMed = Math.max(0,damMedMax - wpCrit);
+            let damLong = Math.max(0,damLongMax - wpCrit);
+
+
+
+
             setAttrs({
                 "engine1": engine1,
                 "fc1": fc1,
@@ -380,7 +391,9 @@
                 "movestatus": movestatus,
                 "tmm": tmm,
                 "tmmstatus": tmmstatus,
-
+                "damShort": damShort,
+                "damMed": damMed,
+                "damLong": damLong,
 
 
             });
