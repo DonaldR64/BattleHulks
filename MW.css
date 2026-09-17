@@ -333,6 +333,11 @@ section {
 }
 
 
+.specialsinfo {
+  flex-direction: center;
+  background-color:  white;
+}
+
 .spheader {
   text-align: center;
 }
@@ -342,6 +347,7 @@ section {
     grid-gap: 4px;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(auto-fill,1fr);
+
 }
 
 .sp1 {
