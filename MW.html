@@ -9,45 +9,98 @@
         <div class="col">
             <h3>Team Information</h3>
             <label>Name:</label><input type="text" name="attr_character_name">
+            <label>Variant/Configuration:</label><input type="text" name="attr_variant">
             <br>
+            <label for="attr_faction">Faction:</label>
+            <select name="attr_faction">
+                <option value="" selected disabled hidden>Choose here</option>
+                <option value="Clan">Clan</option>
+                <option value="Inner Sphere">Inner Sphere</option>
+                <option value="Mercenary Band">Mercenary Band</option>
+            </select>
             <label for="attr_type">Type:</label>
             <select name="attr_type">
                 <option value="" selected disabled hidden>Choose here</option>
-                <option value="Battle Hulk">Battle Hulk</option>
-                <option value="Tank">Tank</option>
-                <option value="Infantry">Infantry</option>
+                <option value="BattleMech">BattleMech</option>
                 <option value="System Token">System Token</option>
-
             </select>
-            <label for="attr_size">Quality:</label>
+            <label for="attr_size">Size:</label>
             <select name="attr_size">
+                <option value="Assault">Assault</option>
                 <option value="Heavy">Heavy</option>
                 <option value="Medium">Medium</option>
                 <option value="Light">Light</option>
             </select>
             <br>  
-            <label>Points:</label><input type="number" name="attr_points">
+            <label for="attr_role">Role:</label>
+            <select name="attr_role">
+                <option value="Brawler">Brawler</option>
+                <option value="Juggernaught">Juggernaught</option>
+                <option value="Sniper">Sniper</option>
+                <option value="Missile Boat">Missile Boat</option>
+                <option value="Striker">Striker</option>
+                <option value="Skirmisher">Skirmisher</option>
+                <option value="Scout">Scout</option>
+            </select>            
+            <label for="attr_skill">Skill:</label>
+            <select name="attr_skill">
+                <option value=4>Regular/Inner Sphere</option>
+                <option value=3>Veteran/Clan</option>
+                <option value=5>Green</option>
+                <option value=2>Elite</option>
+                <option value=1>Heroic</option>
+                <option value=0>Legendary</option>
+            </select>
+            <label>Move:</label><input type="number" name="attr_move">
+            <label for="attr_movespecial">Special Movement:</label>
+            <select name="attr_movespecial">
+                <option value="">Nil</option>
+                <option value="j">Jump</option>
+            </select>            
+            <label>TMM:</label><input type="number" name="attr_tmm">
         </div>
         <div class="col">
-            <h3>Stats</h3>
-            <label>Defense (G/Y/R):</label><input type="text" name="attr_defense">
-            <label>Melee Attack (G/Y/R):</label><input type="text" name="attr_melee">
-            <label>Move (G/Y/R):</label><input type="text" name="attr_move">
-            <label>Fuel:</label><input type="number" name="attr_fuel">
-            <label>Heat Rating:</label><input type="number" name="attr_heatrating">
+            <h3>Weapons</h3>
+            <label>Weapons:</label><input type="text" name="attr_weapons">
+            <label>Overhead value:</label><input type="text" name="attr_overheat">
+            <label>Damage (Short):</label><input type="text" name="attr_damShort">
+            <label>Damage (Med):</label><input type="text" name="attr_damMed">
+            <label>Damage (Long):</label><input type="text" name="attr_damLong">
         </div>
         <div class="col">
-            <h3>Structure</h3>
-            <label>Armour:</label><input type="number" name="attr_armour_max">
-            <label>Structure:</label><input type="number" name="attr_structure_max">
-            <label>Red End:</label><input type="number" name="attr_redstructure">
-            <label>Yellow End:</label><input type="number" name="attr_yellowstructure">
+            <h3>Defense</h3>
+            <label>Armour Max:</label><input type="number" name="attr_armour_max">
+            <label>Structure Max:</label><input type="number" name="attr_structure_max">
         </div>
         <div class="col">
-            <h3>Equipment</h3>
-            <label>Item 1:</label><input type="text" name="attr_equipment1">
-            <label>Item 2:</label><input type="text" name="attr_equipment2">
-            <label>Item 3:</label><input type="text" name="attr_equipment3">
+            <h3>Sample Settings</h3>
+            <label for="attr_heat">Current Heat:</label>
+            <select name="attr_heat">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="S">S</option>
+            </select>
+            <h3>Criticals</h3>
+            <label>Engine:</label><input type="checkbox" name="attr_enginecrit" value="1">   
+            <label>FC1:</label><input type="checkbox" name="attr_fc1crit" value="1">   
+            <label>FC2:</label><input type="checkbox" name="attr_fc2crit" value="1">   
+            <label>FC3:</label><input type="checkbox" name="attr_fc3crit" value="1">   
+            <label>FC4:</label><input type="checkbox" name="attr_fc4crit" value="1">   
+            <label>MP1:</label><input type="checkbox" name="attr_mp1crit" value="1">   
+            <label>MP2:</label><input type="checkbox" name="attr_mp2crit" value="1">   
+            <label>MP3:</label><input type="checkbox" name="attr_mp3crit" value="1">   
+            <label>MP4:</label><input type="checkbox" name="attr_mp4crit" value="1">   
+            <label>WP1:</label><input type="checkbox" name="attr_wp1crit" value="1">   
+            <label>WP2:</label><input type="checkbox" name="attr_wp2crit" value="1">   
+            <label>WP3:</label><input type="checkbox" name="attr_wp3crit" value="1">   
+            <label>WP4:</label><input type="checkbox" name="attr_wp4crit" value="1">   
+        </div>
+
+        <div class="col">
+            <h3>Special [, separated]</h3>
+            <label>Item 1:</label><input type="text" name="attr_special">
         </div>
 
 
@@ -55,72 +108,6 @@
 
     </div>    
 
-    <div class="row">
-        <h3>Weapons</h3>
-        <div class="weapons">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Equipped</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Range</th>
-                        <th>Attack G/Y/R</th>
-                        <th>Special</th>
-                        <th>Ammo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><select name="attr_weapon1equipped">
-                            <option value = "Off">Off</option>
-                            <option value = "Equipped">Equipped</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon1name"></td>
-                        <td><select name="attr_weapon1type">
-                            <option value = "Kinetic">Kinetic</option>
-                            <option value = "Energy">Energy</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon1range"></td>
-                        <td><input type="text" name="attr_weapon1attack"></td>
-                        <td><input type="text" name="attr_weapon1special"></td>
-                        <td><input type="text" name="attr_weapon1ammo"></td>
-                    </tr>
-                    <tr>
-                        <td><select name="attr_weapon2equipped">
-                            <option value = "Off">Off</option>
-                            <option value = "Equipped">Equipped</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon2name"></td>
-                        <td><select name="attr_weapon2type">
-                            <option value = "Kinetic">Kinetic</option>
-                            <option value = "Energy">Energy</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon2range"></td>
-                        <td><input type="text" name="attr_weapon2attack"></td>
-                        <td><input type="text" name="attr_weapon2special"></td>
-                        <td><input type="text" name="attr_weapon2ammo"></td>
-                    </tr>
-                    <tr>
-                        <td><select name="attr_weapon3equipped">
-                            <option value = "Off">Off</option>
-                            <option value = "Equipped">Equipped</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon3name"></td>
-                        <td><select name="attr_weapon3type">
-                            <option value = "Kinetic">Kinetic</option>
-                            <option value = "Energy">Energy</option>
-                        </select></td>
-                        <td><input type="text" name="attr_weapon3range"></td>
-                        <td><input type="text" name="attr_weapon3attack"></td>
-                        <td><input type="text" name="attr_weapon3special"></td>
-                        <td><input type="text" name="attr_weapon3ammo"></td>
-                    </tr>
-
-                </tbody>
-            </table>    
-        </div>   
-    </div>
 </div>
 
 
@@ -130,73 +117,64 @@
             <main>
                 <section class="info f-center">
                     <h1><span name="attr_character_name"></span></h1>
-                    <h3><span name="attr_type"></span></h3>
-                    <h3><span name="attr_size"></span> Size</h3>
-                    <h3><span name="attr_points"></span> Pts.</h3>
+                    <h2><span name="attr_variant"></span> Variant</h2>
+                    <h3><span name="attr_size"></span> <span name="attr_type"></span></h3>
+                    <h3><span name="attr_faction"></span> <span name="attr_role"></span></h3>
+                </section>
+
+                <section class="pic">
+                    <div>
+                        <img alt="Character Avatar" name="attr_character_avatar" style="width:auto;height:250px; bottom: 0;"/>
+                    </div>
                 </section>
 
                 <section class="stats f-center">
-                    <h3>Defense: <span name="attr_defensegreen"></span><span name="attr_defenseyellow"></span><span name="attr_defensered"></span></h3>
-                    <h3>Melee: <span name="attr_meleegreen"></span><span name="attr_meleeyellow"></span><span name="attr_meleered"></span></h3>
-                    <h3>Move: <span name="attr_movegreen"></span><span name="attr_moveyellow"></span><span name="attr_movered"></span></h3>
-                    <h3>Fuel: <span name="attr_fuel"></span></h3>
-                    <h3>Heat Rating: <span name="attr_heatrating"></span></h3>
-
+                    <h3>Skill: <span name="attr_skill"></span></h3>
+                    <h3>Move: <span name="attr_move"></span> <span name="attr_movespecial"></span></h3>
+                    <h3>Overheat: <span name="attr_ov"></span></h3>
+                    <h3>Current Heat: <span name="attr_heat"></span></h3>
                 </section>
 
-                <section class="structure">
-                    <h3>Structure</h3>
-                    <h4><span name="attr_structure"></span></h4>
+                <section class="defense">
+                    <h3>Armour: <span name="attr_armour"></span> [<span name="attr_armour_max">]</span></h3>
+                    <h3>Structure: <span name="attr_structure"></span> [<span name="attr_structure_max">]</span></h3>
                 </section>
 
-                <section class="armour">
-                    <h3>Armour</h3>
-                    <h4><span name="attr_armour"></span></h4>
-                </section>
 
-                <section class="equipment">
-                    <h3>Equipment</h3>
-                    <h4><span name="attr_equipment1"></span></h4>
-                    <h4><span name="attr_equipment2"></span></h4>
-                    <h4><span name="attr_equipment3"></span></h4>
+                <section class="special">
+                    <h3>Special Abilities/Equipment</h3>
+                    <h4><span name="attr_special"></span></h4>
                 </section>
 
                 <section class="weapons">    
                     <div class="weaponinfo">
-                        <span>Name</span>    
-                        <span>Type</span>    
-                        <span>Range</span>    
-                        <span>Attack</span>    
-                        <span>Special</span>
-                        <span>Ammo</span>
+                        <h3>Weapons: <span name="attr_weapons"></span></h3>
                     </div>        
-                    <input type="hidden" name="attr_weapon1equipped" class="weapon1-status" value="Off">
-                    <div class="weapon1">
-                        <h4><span name="attr_weapon1name"></span></h4>
-                        <h4><span name="attr_weapon1type"></span></h4>
-                        <h4><span name="attr_weapon1range"></span></h4>
-                        <h4><span name="attr_weapon1attack"></span></h4>
-                        <h4><span name="attr_weapon1special"></span></h4>
-                        <h4><span name="attr_weapon1ammo"></span></h4>
+                    <div class="shorttitle">
+                        <h3>Short [+0]</h3>
                     </div>
-                    <input type="hidden" name="attr_weapon2equipped" class="weapon2-status" value="Off">
-                    <div class="weapon2">
-                        <h4><span name="attr_weapon2name"></span></h4>
-                        <h4><span name="attr_weapon2type"></span></h4>
-                        <h4><span name="attr_weapon2range"></span></h4>
-                        <h4><span name="attr_weapon2attack"></span></h4>
-                        <h4><span name="attr_weapon2special"></span></h4>
-                        <h4><span name="attr_weapon2ammo"></span></h4>
+                    <div class="mediumtitle">
+                        <h3>Medium [+2]</h3>
                     </div>
-                    <input type="hidden" name="attr_weapon3equipped" class="weapon3-status" value="Off">
-                    <div class="weapon3">
-                        <h4><span name="attr_weapon3name"></span></h4>
-                        <h4><span name="attr_weapon3type"></span></h4>
-                        <h4><span name="attr_weapon3range"></span></h4>
-                        <h4><span name="attr_weapon3attack"></span></h4>
-                        <h4><span name="attr_weapon3special"></span></h4>
-                        <h4><span name="attr_weapon3ammo"></span></h4>
+                    <div class="longtitle">
+                        <h3>Long [+4]</h3>
                     </div>
+                    <div class="shortinfo">
+                        <h3><span name="attr_damShort"></span></h3>
+                    </div>
+                    <div class="mediuminfo">
+                        <h3><span name="attr_damMed"></span></h3>
+                    </div>
+                    <div class="longinfo">
+                        <h3><span name="attr_damLong"></span></h3>
+                    </div>
+                </section>
+
+                <section class="criticals">
+                    <h4>Engine (+1 Heat/Firing): </h4>
+                    <h4>Fire Control (+2): </h4>
+                    <h4>Movement (-1): </h4>
+                    <h4>Weapon: (-1 Dam)</h4>
                 </section>
             </main>
         </div>
@@ -225,41 +203,4 @@
     });
 
 
-    on("change:armour change:type change:speed sheet:opened", function() {
-        getAttrs(["defense","melee","move"], function(values) {
-
-            let defense = values.defense.split("/");
-            let move = values.move.split("/");
-            let melee = values.melee.split("/");
-
-            let defensegreen = defense[0] || "-";
-            let defenseyellow = defense[1] || "-";
-            let defensered = defense[2] || "-";
-
-            let movegreen = move[0] || "-";
-            let moveyellow = move[1] || "-";
-            let movered = move[2] || "-";
-
-            let meleegreen = melee[0] || "-";
-            let meleeyellow = melee[1] || "-";
-            let meleered = melee[2] || "-";
-
-
-
-            setAttrs({
-                defensegreen: defensegreen,
-                defenseyellow: defenseyellow,
-                defensered: defensered,
-                movegreen: movegreen,
-                moveyellow: moveyellow,
-                movered: movered,
-                meleegreen: meleegreen,
-                meleeyellow: meleeyellow,
-                meleered: meleered,
-
-
-
-            }); 
-        });
-    });
 </script>

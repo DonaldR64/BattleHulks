@@ -1,0 +1,1486 @@
+/*Configure the tab buttons*/
+.sheet-input,
+.sheet-ship {
+    display: none;
+}
+
+
+/* show the selected tab */
+.sheet-tabstoggle[value="input"] ~ div.sheet-input,
+.sheet-tabstoggle[value="ship"] ~ div.sheet-ship {
+    display: block;
+}
+
+
+.mysheet {
+    width: 830px;
+    height: 730px;
+}
+.attributes {
+    padding: 15px 0px 0px 15px;
+}
+
+input[type="hidden"][name="attr_faction"] ~ .mysheet {
+    background-color: lightgray;
+}
+input[type="hidden"][name="attr_faction"][value="Federation"] ~ .mysheet {
+    background-color: mediumblue;
+}
+input[type="hidden"][name="attr_faction"][value="Klingon"] ~ .mysheet {
+    background-color: black;
+}
+
+
+main {
+  display: grid;
+  width: 800px;
+  height: 700px;
+  grid-gap: 4px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(7,1fr);
+  grid-template-areas:  "top    top  top top"
+                        "top    top  top top"
+                        "core  ship ship helm"
+                        "ops  ship ship damage"
+                        "eng   ship ship damage"
+                        "eng   ship ship damage"
+                        "eng   ship ship damage";
+}
+
+
+
+/*----------------- GENERAL CSS ------------------*/
+
+section {
+    padding: 5px;
+    border-style: solid;
+}
+
+/* CSS Flexbox styling, used for adjusting how content inside section behaves */
+.f-col {
+  display: flex;
+  flex-direction: column;
+}
+.f-row {
+  display: flex;
+  flex-direction: row;
+  justify-items: all;
+}
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.f-center {
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*----------------- Text & Input styling -----------------*/
+
+/* these are for overwriting default CSS that comes from Roll20 */
+
+.charsheet * {
+  font-family: "serif;";
+}
+
+.charsheet h1{
+  text-align: center;
+  color: black;
+}
+.charsheet h2{
+  text-align: center;
+  color:  darkred;
+}
+.charsheet h3{
+  text-align: center;
+  color: black;
+}
+
+.charsheet h4{
+  text-align: center;
+  color: white;
+}
+
+.charsheet h5{
+  text-align: center;
+  color: white;
+}
+
+
+
+/*------------- Section-specific CSS -------------*/
+
+/* Main Grid */
+.top {
+    grid-area: top;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    background-color: white;
+    align-items: center;
+    background-image: url("https://files.d20.io/images/494928727/5D-S5MXOUCAVrm2NrpqxMA/thumb.jpg?1784752628");
+    background-repeat: repeat;
+}
+
+.class {
+  grid-area: class;
+  background-color:  white;
+}
+.helm {
+    grid-area: helm;
+    background-color:  white;
+}
+.helm h3{
+    color: black;
+}
+.helm h4{
+    color: darkred;
+}
+
+.core {
+  grid-area: core;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,1fr);
+    background-color: white;
+}
+.eng {
+  grid-area: eng;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    background-color: white;
+}
+
+.ops {
+  grid-area: ops;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    background-color: white;
+}
+
+.ship {
+    grid-area: ship;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(9,1fr);
+    grid-template-rows: repeat(11,1fr);
+    background-color: white;
+    align-items: center;
+}
+
+
+
+.damage {
+    grid-area: damage;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10,1fr);
+    background-color: white;
+}
+
+
+/* Damage Sub Areas */
+.d1status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="All Systems Nominal"].d1-status ~ .d1status{
+    background-color: green;
+}
+
+.d2status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d2-status ~ .d2status{
+    display: none;
+}
+
+.d3status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d3-status ~ .d3status{
+    display: none;
+}
+
+.d4status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d4-status ~ .d4status{
+    display: none;
+}
+
+.d5status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d5-status ~ .d5status{
+    display: none;
+}
+
+.d6status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d6-status ~ .d6status{
+    display: none;
+}
+
+.d7status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d7-status ~ .d7status{
+    display: none;
+}
+
+.d8status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d8-status ~ .d8status{
+    display: none;
+}
+
+.d9status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d9-status ~ .d9status{
+    display: none;
+}
+
+.d10status {
+    display: grid;
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color:  red;
+} 
+input[type="hidden"][value="None"].d10-status ~ .d10status{
+    display: none;
+}
+
+
+
+/* Ship Sub Areas*/
+
+
+.toppic {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+/* Box Positions for Weapon Pics */
+/* row then column,  there are 11 rows, 9 columns possible */
+pos11{
+grid-row: 1/2;
+grid-column: 1/2;
+}
+.pos12{
+grid-row: 1/2;
+grid-column: 2/3;
+}
+.pos13{
+grid-row: 1/2;
+grid-column: 3/4;
+}
+.pos14{
+grid-row: 1/2;
+grid-column: 4/5;
+}
+.pos15{
+grid-row: 1/2;
+grid-column: 5/6;
+}
+.pos16{
+grid-row: 1/2;
+grid-column: 6/7;
+}
+.pos17{
+grid-row: 1/2;
+grid-column: 7/8;
+}
+.pos18{
+grid-row: 1/2;
+grid-column: 8/9;
+}
+.pos19{
+grid-row: 1/2;
+grid-column: 9/10;
+}
+.pos21{
+grid-row: 2/3;
+grid-column: 1/2;
+}
+.pos22{
+grid-row: 2/3;
+grid-column: 2/3;
+}
+.pos23{
+grid-row: 2/3;
+grid-column: 3/4;
+}
+.pos24{
+grid-row: 2/3;
+grid-column: 4/5;
+}
+.pos25{
+grid-row: 2/3;
+grid-column: 5/6;
+}
+.pos26{
+grid-row: 2/3;
+grid-column: 6/7;
+}
+.pos27{
+grid-row: 2/3;
+grid-column: 7/8;
+}
+.pos28{
+grid-row: 2/3;
+grid-column: 8/9;
+}
+.pos29{
+grid-row: 2/3;
+grid-column: 9/10;
+}
+.pos31{
+grid-row: 3/4;
+grid-column: 1/2;
+}
+.pos32{
+grid-row: 3/4;
+grid-column: 2/3;
+}
+.pos33{
+grid-row: 3/4;
+grid-column: 3/4;
+}
+.pos34{
+grid-row: 3/4;
+grid-column: 4/5;
+}
+.pos35{
+grid-row: 3/4;
+grid-column: 5/6;
+}
+.pos36{
+grid-row: 3/4;
+grid-column: 6/7;
+}
+.pos37{
+grid-row: 3/4;
+grid-column: 7/8;
+}
+.pos38{
+grid-row: 3/4;
+grid-column: 8/9;
+}
+.pos39{
+grid-row: 3/4;
+grid-column: 9/10;
+}
+.pos41{
+grid-row: 4/5;
+grid-column: 1/2;
+}
+.pos42{
+grid-row: 4/5;
+grid-column: 2/3;
+}
+.pos43{
+grid-row: 4/5;
+grid-column: 3/4;
+}
+.pos44{
+grid-row: 4/5;
+grid-column: 4/5;
+}
+.pos45{
+grid-row: 4/5;
+grid-column: 5/6;
+}
+.pos46{
+grid-row: 4/5;
+grid-column: 6/7;
+}
+.pos47{
+grid-row: 4/5;
+grid-column: 7/8;
+}
+.pos48{
+grid-row: 4/5;
+grid-column: 8/9;
+}
+.pos49{
+grid-row: 4/5;
+grid-column: 9/10;
+}
+.pos51{
+grid-row: 5/6;
+grid-column: 1/2;
+}
+.pos52{
+grid-row: 5/6;
+grid-column: 2/3;
+}
+.pos53{
+grid-row: 5/6;
+grid-column: 3/4;
+}
+.pos54{
+grid-row: 5/6;
+grid-column: 4/5;
+}
+.pos55{
+grid-row: 5/6;
+grid-column: 5/6;
+}
+.pos56{
+grid-row: 5/6;
+grid-column: 6/7;
+}
+.pos57{
+grid-row: 5/6;
+grid-column: 7/8;
+}
+.pos58{
+grid-row: 5/6;
+grid-column: 8/9;
+}
+.pos59{
+grid-row: 5/6;
+grid-column: 9/10;
+}
+.pos61{
+grid-row: 6/7;
+grid-column: 1/2;
+}
+.pos62{
+grid-row: 6/7;
+grid-column: 2/3;
+}
+.pos63{
+grid-row: 6/7;
+grid-column: 3/4;
+}
+.pos64{
+grid-row: 6/7;
+grid-column: 4/5;
+}
+.pos65{
+grid-row: 6/7;
+grid-column: 5/6;
+}
+.pos66{
+grid-row: 6/7;
+grid-column: 6/7;
+}
+.pos67{
+grid-row: 6/7;
+grid-column: 7/8;
+}
+.pos68{
+grid-row: 6/7;
+grid-column: 8/9;
+}
+.pos69{
+grid-row: 6/7;
+grid-column: 9/10;
+}
+.pos71{
+grid-row: 7/8;
+grid-column: 1/2;
+}
+.pos72{
+grid-row: 7/8;
+grid-column: 2/3;
+}
+.pos73{
+grid-row: 7/8;
+grid-column: 3/4;
+}
+.pos74{
+grid-row: 7/8;
+grid-column: 4/5;
+}
+.pos75{
+grid-row: 7/8;
+grid-column: 5/6;
+}
+.pos76{
+grid-row: 7/8;
+grid-column: 6/7;
+}
+.pos77{
+grid-row: 7/8;
+grid-column: 7/8;
+}
+.pos78{
+grid-row: 7/8;
+grid-column: 8/9;
+}
+.pos79{
+grid-row: 7/8;
+grid-column: 9/10;
+}
+.pos81{
+grid-row: 8/9;
+grid-column: 1/2;
+}
+.pos82{
+grid-row: 8/9;
+grid-column: 2/3;
+}
+.pos83{
+grid-row: 8/9;
+grid-column: 3/4;
+}
+.pos84{
+grid-row: 8/9;
+grid-column: 4/5;
+}
+.pos85{
+grid-row: 8/9;
+grid-column: 5/6;
+}
+.pos86{
+grid-row: 8/9;
+grid-column: 6/7;
+}
+.pos87{
+grid-row: 8/9;
+grid-column: 7/8;
+}
+.pos88{
+grid-row: 8/9;
+grid-column: 8/9;
+}
+.pos89{
+grid-row: 8/9;
+grid-column: 9/10;
+}
+.pos91{
+grid-row: 9/10;
+grid-column: 1/2;
+}
+.pos92{
+grid-row: 9/10;
+grid-column: 2/3;
+}
+.pos93{
+grid-row: 9/10;
+grid-column: 3/4;
+}
+.pos94{
+grid-row: 9/10;
+grid-column: 4/5;
+}
+.pos95{
+grid-row: 9/10;
+grid-column: 5/6;
+}
+.pos96{
+grid-row: 9/10;
+grid-column: 6/7;
+}
+.pos97{
+grid-row: 9/10;
+grid-column: 7/8;
+}
+.pos98{
+grid-row: 9/10;
+grid-column: 8/9;
+}
+.pos99{
+grid-row: 9/10;
+grid-column: 9/10;
+}
+.pos101{
+grid-row: 10/11;
+grid-column: 1/2;
+}
+.pos102{
+grid-row: 10/11;
+grid-column: 2/3;
+}
+.pos103{
+grid-row: 10/11;
+grid-column: 3/4;
+}
+.pos104{
+grid-row: 10/11;
+grid-column: 4/5;
+}
+.pos105{
+grid-row: 10/11;
+grid-column: 5/6;
+}
+.pos106{
+grid-row: 10/11;
+grid-column: 6/7;
+}
+.pos107{
+grid-row: 10/11;
+grid-column: 7/8;
+}
+.pos108{
+grid-row: 10/11;
+grid-column: 8/9;
+}
+.pos109{
+grid-row: 10/11;
+grid-column: 9/10;
+}
+.pos111{
+grid-row: 11/12;
+grid-column: 1/2;
+}
+.pos112{
+grid-row: 11/12;
+grid-column: 2/3;
+}
+.pos113{
+grid-row: 11/12;
+grid-column: 3/4;
+}
+.pos114{
+grid-row: 11/12;
+grid-column: 4/5;
+}
+.pos115{
+grid-row: 11/12;
+grid-column: 5/6;
+}
+.pos116{
+grid-row: 11/12;
+grid-column: 6/7;
+}
+.pos117{
+grid-row: 11/12;
+grid-column: 7/8;
+}
+.pos118{
+grid-row: 11/12;
+grid-column: 8/9;
+}
+.pos119{
+grid-row: 11/12;
+grid-column: 9/10;
+}
+
+
+
+
+
+
+.toppic img{
+    flex-shrink: 0;
+    width: 400px;
+    height: 500px;
+}
+
+/* Weapon 1 */
+input[type="hidden"][value="Off"].weapon1-status ~ .weapon1{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon1-status ~ .weapon1{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon1-status ~ .weapon1 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+}
+input[type="hidden"][value="Offline"].weapon1-status ~ .weapon1 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+
+
+.weapon1 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Weapon 2 */
+input[type="hidden"][value="Off"].weapon2-status ~ .weapon2{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon2-status ~ .weapon2{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon2-status ~ .weapon2 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon2-status ~ .weapon2 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon2 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Weapon 3 */
+input[type="hidden"][value="Off"].weapon3-status ~ .weapon3{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon3-status ~ .weapon3{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon3-status ~ .weapon3 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon3-status ~ .weapon3 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon3 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Weapon 4 */
+input[type="hidden"][value="Off"].weapon4-status ~ .weapon4{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon4-status ~ .weapon4{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon4-status ~ .weapon4 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon4-status ~ .weapon4 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon4 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Weapon 5 */
+input[type="hidden"][value="Off"].weapon5-status ~ .weapon5{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon5-status ~ .weapon5{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon5-status ~ .weapon5 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon5-status ~ .weapon5 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon5 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 6 */
+input[type="hidden"][value="Off"].weapon6-status ~ .weapon6{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon6-status ~ .weapon6{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon6-status ~ .weapon6 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon6-status ~ .weapon6 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon6 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 7 */
+input[type="hidden"][value="Off"].weapon7-status ~ .weapon7{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon7-status ~ .weapon7{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon7-status ~ .weapon7 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon7-status ~ .weapon7 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon7 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 8 */
+input[type="hidden"][value="Off"].weapon8-status ~ .weapon8{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon8-status ~ .weapon8{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon8-status ~ .weapon8 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon8-status ~ .weapon8 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon8 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 9 */
+input[type="hidden"][value="Off"].weapon9-status ~ .weapon9{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon9-status ~ .weapon9{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon9-status ~ .weapon9 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon9-status ~ .weapon9 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon9 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 10 */
+input[type="hidden"][value="Off"].weapon10-status ~ .weapon10{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon10-status ~ .weapon10{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon10-status ~ .weapon10 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon10-status ~ .weapon10 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon10 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 11 */
+input[type="hidden"][value="Off"].weapon11-status ~ .weapon11{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon11-status ~ .weapon11{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon11-status ~ .weapon11 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon11-status ~ .weapon11 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon11 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Weapon 12 */
+input[type="hidden"][value="Off"].weapon12-status ~ .weapon12{
+    display: none;
+}
+input[type="hidden"]:not[value="Off"].weapon12-status ~ .weapon12{
+    display: grid;
+}
+input[type="hidden"][value="Fired"].weapon12-status ~ .weapon12 img{
+    filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(87%) contrast(92%);
+
+}
+input[type="hidden"][value="Offline"].weapon12-status ~ .weapon12 img{
+    filter: invert(11%) sepia(97%) saturate(5808%) hue-rotate(0deg) brightness(101%) contrast(114%);
+}
+.weapon12 img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Bridge Icon */
+input[type="hidden"][value="Green"].bridgepos-status ~ .bridgepos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].bridgepos-status ~ .bridgepos{
+    display: grid;
+}
+.bridgepos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Lifesupport Icon */
+input[type="hidden"][value="Green"].lifepos-status ~ .lifepos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].lifepos-status ~ .lifepos{
+    display: grid;
+}
+.lifepos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Warp Core Icon */
+input[type="hidden"][value="Green"].warpcorepos-status ~ .warpcorepos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].warpcorepos-status ~ .warpcorepos{
+    display: grid;
+}
+.warpcorepos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Warp Drive Icon */
+input[type="hidden"][value="Green"].warpdrivepos-status ~ .warpdrivepos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].warpdrivepos-status ~ .warpdrivepos{
+    display: grid;
+}
+.warpdrivepos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Impulse 1 Icon */
+input[type="hidden"][value="Green"].impulse1pos-status ~ .impulse1pos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].impulse1pos-status ~ .impulse1pos{
+    display: grid;
+}
+.impulse1pos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Impulse 2 Icon */
+input[type="hidden"][value="Green"].impulse2pos-status ~ .impulse2pos{
+    display: none;
+}
+input[type="hidden"]:not[value="Green"].impulse2pos-status ~ .impulse2pos{
+    display: grid;
+}
+.impulse2pos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+/* Defensive Screen Icon */
+input[type="hidden"][value="Green"].screenpos-status ~ .screenpos{
+    display: none;
+}
+input[type="hidden"][value="None"].screenpos-status ~ .screenpos{
+    display: none;
+}
+input[type="hidden"][value="Red"].screenpos-status ~ .screenpos{
+    display: grid;
+}
+.screenpos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Fire Control Icon */
+input[type="hidden"][value="Green"].fireconpos-status ~ .fireconpos{
+    display: none;
+}
+input[type="hidden"][value="Red"].fireconpos-status ~ .fireconpos{
+    display: grid;
+}
+.fireconpos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+/* Cloaking Device Icon */
+input[type="hidden"][value="Green"].cloakpos-status ~ .cloakpos{
+    display: none;
+}
+input[type="hidden"][value="None"].cloakpos-status ~ .cloakpos{
+    display: none;
+}
+input[type="hidden"][value="Red"].cloakpos-status ~ .cloakpos{
+    display: grid;
+}
+.cloakpos img{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+/* core Sub Sections */
+
+.commandstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].command-status ~ .commandstatus {
+    background-color: red;
+}
+input[type="hidden"][value="Orange"].command-status ~ .commandstatus {
+    background-color: orange;
+}
+input[type="hidden"][value="Orange"].command-status ~ .commandstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Green"].command-status ~ .commandstatus {
+    background-color: green;
+}
+
+
+.lifesupportstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].lifesupport-status ~ .lifesupportstatus {
+    background-color: red;
+}
+input[type="hidden"][value="Green"].lifesupport-status ~ .lifesupportstatus {
+    background-color: green;
+}
+
+.warpcorestatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].warpcore-status ~ .warpcorestatus {
+    background-color: red;
+}
+input[type="hidden"][value="Green"].warpcore-status ~ .warpcorestatus {
+    background-color: green;
+}
+
+/* Eng Sub Sections */
+
+
+.warpdrivestatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].warpdrive-status ~ .warpdrivestatus {
+    background-color: red;
+}
+input[type="hidden"][value="Green"].warpdrive-status ~ .warpdrivestatus {
+    background-color: green;
+}
+
+.impulsestatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].impulse-status ~ .impulsestatus {
+    background-color: red;
+}
+input[type="hidden"][value="Yellow"].impulse-status ~ .impulsestatus {
+    background-color: yellow;
+}
+input[type="hidden"][value="Yellow"].impulse-status ~ .impulsestatus h4{
+    color: black;
+}
+input[type="hidden"][value="Green"].impulse-status ~ .impulsestatus {
+    background-color: green;
+}
+
+
+.hullstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Dark Red"].hull-status ~ .hullstatus {
+    background-color: darkred;
+}
+input[type="hidden"][value="Red"].hull-status ~ .hullstatus {
+    background-color: red;
+}
+input[type="hidden"][value="Orange"].hull-status ~ .hullstatus {
+    background-color: orange;
+}
+input[type="hidden"][value="Orange"].hull-status ~ .hullstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Yellow"].hull-status ~ .hullstatus {
+    background-color: yellow;
+}
+input[type="hidden"][value="Yellow"].hull-status ~ .hullstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Green"].hull-status ~ .hullstatus {
+    background-color: green;
+}
+
+
+.screenstatus {
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].screen-status ~ .screenstatus {
+    background-color: red;
+    display: grid;
+}
+input[type="hidden"][value="Yellow"].screen-status ~ .screenstatus {
+    background-color: yellow;
+    display: grid;
+}
+input[type="hidden"][value="Green"].screen-status ~ .screenstatus {
+    background-color: green;
+    display: grid;
+}
+input[type="hidden"][value="None"].screen-status ~ .screenstatus {
+    display: none;
+}
+
+.screenstatus2 {
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].screen-status2 ~ .screenstatus2 {
+    background-color: red;
+    display: grid;
+}
+input[type="hidden"][value="Yellow"].screen-status2 ~ .screenstatus2 {
+    background-color: yellow;
+    display: grid;
+}
+input[type="hidden"][value="Green"].screen-status2 ~ .screenstatus2 {
+    background-color: green;
+    display: grid;
+}
+input[type="hidden"][value="None"].screen-status2 ~ .screenstatus2 {
+    display: none;
+}
+
+
+
+.shieldstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+    background-color:  green;
+}
+input[type="hidden"][value="Down"].shield-status ~ .shieldstatus {
+    background-color:  red;
+}
+input[type="hidden"][value="Yellow"].shield-status ~ .shieldstatus {   
+    background-color:  yellow;
+}
+input[type="hidden"][value="Yellow"].shield-status ~ .shieldstatus h4{   
+    color:  black;
+}
+input[type="hidden"][value="Orange"].shield-status ~ .shieldstatus {
+    background-color: orange;
+}
+input[type="hidden"][value="Orange"].shield-status ~ .shieldstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Red"].shield-status ~ .shieldstatus {   
+    background-color:  red;
+}
+
+.armourstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Yellow"].armour-status ~ .armourstatus {   
+    background-color:  yellow;
+    display: grid;
+}
+input[type="hidden"][value="Yellow"].armour-status ~ .armourstatus h4{   
+    color:  black;
+    display: grid;
+}
+input[type="hidden"][value="Red"].armour-status ~ .armourstatus {   
+    background-color:  red;
+    display: grid;
+}
+input[type="hidden"][value="Green"].armour-status ~ .armourstatus {   
+    background-color:  green;
+    display: grid;
+}
+input[type="hidden"][value="None"].armour-status ~ .armourstatus {   
+    display: none;
+}
+
+
+
+/* Ops Sub Sections */
+
+
+.cloakstatus {
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].cloak-status ~ .cloakstatus {
+    background-color: red;
+    display: grid;
+}
+input[type="hidden"][value="Green"].cloak-status ~ .cloakstatus {
+    display: grid;
+    background-color: green;
+}
+input[type="hidden"][value="None"].cloak-status ~ .cloakstatus {
+    display: none;
+}
+
+
+
+
+
+
+.firecontrolstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].firecontrol-status ~ .firecontrolstatus {
+    background-color: red;
+}
+input[type="hidden"][value="Yellow"].firecontrol-status ~ .firecontrolstatus {
+    background-color: yellow;
+}
+input[type="hidden"][value="Yellow"].firecontrol-status ~ .firecontrolstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Green"].firecontrol-status ~ .firecontrolstatus {
+    background-color: green;
+}
+
+.crewstatus {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    align-items: center;
+    padding: 3px;   
+}
+input[type="hidden"][value="Red"].crew-status ~ .crewstatus {
+    background-color: red;
+}
+input[type="hidden"][value="Orange"].crew-status ~ .crewstatus {
+    background-color: orange;
+}
+input[type="hidden"][value="Orange"].crew-status ~ .crewstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Yellow"].crew-status ~ .crewstatus {
+    background-color: yellow;
+}
+input[type="hidden"][value="Yellow"].crew-status ~ .crewstatus h4{
+    color: black;
+}
+input[type="hidden"][value="Green"].crew-status ~ .crewstatus {
+    background-color: green;
+}
+
+
+
+
+
+/* Top Sub Areas */
+.sidepic {
+    grid-row: 1/-1;
+    grid-column: 2/4;
+    align-items: center;
+    padding: 3px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidepic img{
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.namearea {
+    grid-row: 1/-1;
+    grid-column: 1/2;
+    text-align: center;
+    align-items: center;
+    padding: 3px;
+}
+.namearea h1{
+    color: white;
+}
+.namearea h3{
+    color: white;
+}
+.namearea h4{
+    color: white;
+}
+
+
+.iconarea {
+    grid-row: 1/-1;
+    grid-column: 4/-1;
+    align-items: center;
+    padding: 3px;
+}
+.iconarea img{
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}

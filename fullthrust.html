@@ -1,0 +1,983 @@
+<input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="display"  />
+<div>
+    <button type="action" name="act_input" >Input</button>
+    <button type="action" name="act_ship" >Ship</button>
+</div>
+
+
+<div class="sheet-input">
+    <div class="2colrow">
+        <div class="col">
+            <h3>Unit Information</h3>
+            <label>Name:</label><input type="text" name="attr_character_name">
+            <br>
+            <label>Class:</label><input type="text" name="attr_class">
+            <br>
+            <label for="attr_faction">Faction:</label>
+            <select name="attr_faction">
+                <option value="" selected disabled hidden>Choose here</option>
+                <option value="Federation">Federation</option>
+                <option value="Klingon">Klingon</option>
+            </select>
+            <label>Top Pic URL</label><input type="text" name="attr_toppic" />
+        </div>
+            
+        <div class="col">
+            <h3>Stats</h3>
+            <label>Total Mass:</label><input type="number" name="attr_mass">
+            <label for="attr_type">Type:</label>
+            <select name="attr_type">
+                <option selected = "selected" value="Starship">Starship</option>
+                <option value="Objective">Objective</option>
+                <option value="Asteroid">Asteroid</option>
+                <option value="System">System</option>
+                
+            </select>  
+        </div>
+
+        <div class="col">
+            <h3>Systems</h3>
+            <label>Max Thrusters:</label><input type="number" name="attr_thrusters_max">
+            <label>Advanced Drive?:</label><input type="checkbox" name="attr_advanceddrive" value="1">
+            <label for="attr_firecontrol_max">Fire Control:</label>
+            <select name="attr_firecontrol_max">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <label>Advanced Fire Control ?:</label><input type="checkbox" name="attr_advancedfirecontrol" value="1">
+            <label>Starting Shields (0+):</label><input type="number" name="attr_shields_max">  
+            <label>Starting Armour (0+):</label><input type="number" name="attr_armour_max">  
+            <label>Max Hull:</label><input type="number" name="attr_hull_max">  
+            <label>Advanced Hull:</label><input type="checkbox" name="attr_advancedhull" value="1">
+            <label for="attr_screens_max">Starting Shield Generators/Level:</label>
+            <select name="attr_screens_max">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <label>Cloaking Device:</label><input type="checkbox" name="attr_cloak_max" value="1">   
+        </div>  
+
+        <div class="col">
+            <h3>System Locations - leave blank if none</h3>
+            <h3>(row then column #s)</h3>
+            <label>Bridge:</label><input type="number" name="attr_bridgeloc">
+            <label>Life Support:</label><input type="number" name="attr_lifeloc">
+            <label>Warp Core:</label><input type="number" name="attr_warpcoreloc">
+
+            <label>Impulse 1:</label><input type="number" name="attr_impulse1loc">
+            <label>Impulse 2:</label><input type="number" name="attr_impulse2loc">
+            <label>Warp Drive:</label><input type="number" name="attr_warpdriveloc">
+
+            <label>Screens:</label><input type="number" name="attr_screenloc">
+            <label>Fire Control:</label><input type="number" name="attr_fireconloc">
+
+            <label>Cloaking Device:</label><input type="number" name="attr_cloakloc">
+        </div>
+    </div>    
+
+
+
+
+
+    <div class="row">
+        <h3>Weapons</h3>
+        <div class="weapons">
+            <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Location</th>
+                    <th>Type</th>
+                    <th>Facing (use 1-6)</th>
+                    <th>Location (row then column #s)</th>
+                    <th>URL for Pic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><select name="attr_weapon1status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                        <option value = "Fired">Fired</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon1name"></td>
+                    <td><select name="attr_weapon1type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon1facing"></td>
+                    <td><input type="number" name="attr_weapon1location"></td>
+                    <td><input type="text" name="attr_weapon1pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon2status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                        <option value = "Fired">Fired</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon2name"></td>
+                    <td><select name="attr_weapon2type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon2facing"></td>
+                    <td><input type="number" name="attr_weapon2location"></td>
+                    <td><input type="text" name="attr_weapon2pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon3status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon3name"></td>
+                    <td><select name="attr_weapon3type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon3facing"></td>
+                    <td><input type="number" name="attr_weapon3location"></td>
+                    <td><input type="text" name="attr_weapon3pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon4status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon4name"></td>
+                    <td><select name="attr_weapon4type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon4facing"></td>
+                    <td><input type="number" name="attr_weapon4location"></td>
+                    <td><input type="text" name="attr_weapon4pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon5status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon5name"></td>
+                    <td><select name="attr_weapon5type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon5facing"></td>
+                    <td><input type="number" name="attr_weapon5location"></td>
+                    <td><input type="text" name="attr_weapon5pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon6status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon6name"></td>
+                    <td><select name="attr_weapon6type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon6facing"></td>
+                    <td><input type="number" name="attr_weapon6location"></td>
+                    <td><input type="text" name="attr_weapon6pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon7status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon7name"></td>
+                    <td><select name="attr_weapon7type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon7facing"></td>
+                    <td><input type="number" name="attr_weapon7location"></td>
+                    <td><input type="text" name="attr_weapon7pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon8status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon8name"></td>
+                    <td><select name="attr_weapon8type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon8facing"></td>
+                    <td><input type="number" name="attr_weapon8location"></td>
+                    <td><input type="text" name="attr_weapon8pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon9status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon9name"></td>
+                    <td><select name="attr_weapon9type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon9facing"></td>
+                    <td><input type="number" name="attr_weapon9location"></td>
+                    <td><input type="text" name="attr_weapon9pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon10status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon10name"></td>
+                    <td><select name="attr_weapon10type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon10facing"></td>
+                    <td><input type="number" name="attr_weapon10location"></td>
+                    <td><input type="text" name="attr_weapon10pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon11status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon11name"></td>
+                    <td><select name="attr_weapon11type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon11facing"></td>
+                     <td><input type="number" name="attr_weapon11location"></td>
+                    <td><input type="text" name="attr_weapon11pic"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="attr_weapon12status">
+                        <option selected = "selected" value = "Off">Off</option>
+                        <option value = "Normal">Normal</option>
+                        <option value = "Offline">Offline</option>
+                    </select></td>
+                    <td><input type="text" name="attr_weapon12name"></td>
+                    <td><select name="attr_weapon12type">
+                        <option value = "Phaser I">Phaser I</option>
+                        <option value = "Phaser II">Phaser II</option>
+                        <option value = "Phaser III">Phaser III</option> 
+                        <option value = "Phaser Bank">Phaser Bank</option> 
+                        <option value = "Short Range Photon Torpedo">Short Range Photon Torpedo</option>
+                        <option value = "Photon Torpedo">Photon Torpedo</option>
+                        <option value = "Disruptor">Disruptor</option>
+                        <option value = "Heavy Disruptor">Heavy Disruptor</option>
+                        <option value = "Plasma Bolt Launcher">Plasma Bolt Launcher</option>
+                    </select></td>                 
+                    <td><input type="text" name="attr_weapon12facing"></td>
+                    <td><input type="number" name="attr_weapon12location"></td>
+                    <td><input type="text" name="attr_weapon12pic"></td>
+                </tr>
+
+
+
+
+
+            </tbody>
+            </table>    
+        </div>    
+    </div>    
+
+
+</div>
+
+
+
+<div class="sheet-ship">
+    <input type="hidden" name="attr_faction"/>
+
+    <div class="mysheet">
+      <div class="attributes">
+
+        <main>
+        <input type="hidden" name="attr_faction"/>
+
+        <section class="top">
+            <div class="sidepic">
+                <img alt="Character Avatar" name="attr_character_avatar"/>
+            </div>
+            <div class="namearea">
+                <h1><span name="attr_character_name"></span></h1>
+                <h3><span name="attr_class"></span></h3>
+                <h4>Mass: <span name="attr_mass"</h4>
+            </div>
+            <div class="iconarea">
+                <img name="attr_factionsymbol"/>
+            </div>
+        </section>
+
+        <section class="damage">
+            <h3>Damage Control</h3>
+                <input type="hidden" name="attr_damaged1" class="d1-status" value="None">
+                <div class="d1status">
+                    <h4><span name="attr_damaged1"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged2" class="d2-status" value="None">
+                <div class="d2status">
+                    <h4><span name="attr_damaged2"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged3" class="d3-status" value="None">
+                <div class="d3status">
+                    <h4><span name="attr_damaged3"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged4" class="d4-status" value="None">
+                <div class="d4status">
+                    <h4><span name="attr_damaged4"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged5" class="d5-status" value="None">
+                <div class="d5status">
+                    <h4><span name="attr_damaged5"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged6" class="d6-status" value="None">
+                <div class="d6status">
+                    <h4><span name="attr_damaged6"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged7" class="d7-status" value="None">
+                <div class="d7status">
+                    <h4><span name="attr_damaged7"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged8" class="d8-status" value="None">
+                <div class="d8status">
+                    <h4><span name="attr_damaged8"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged9" class="d9-status" value="None">
+                <div class="d9status">
+                    <h4><span name="attr_damaged9"></span></h4>
+                </div>
+
+                <input type="hidden" name="attr_damaged10" class="d10-status" value="None">
+                <div class="d10status">
+                    <h4><span name="attr_damaged10"></span></h4>
+                </div>
+            
+        </section>
+
+
+        <section class="ship">
+   
+            <div class = "toppic">
+                <img name="attr_toppic"/>
+            </div>
+
+            <input type="hidden" name="attr_weapon1status" class="weapon1-status" value="Off">
+            <div class="weapon1">
+                <img name="attr_weapon1pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon2status" class="weapon2-status" value="Off">
+            <div class="weapon2">
+                <img name="attr_weapon2pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon3status" class="weapon3-status" value="Off">
+            <div class="weapon3">
+                <img name="attr_weapon3pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon4status" class="weapon4-status" value="Off">
+            <div class="weapon4">
+                <img name="attr_weapon4pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon5status" class="weapon5-status" value="Off">
+            <div class="weapon5">
+                <img name="attr_weapon5pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon6status" class="weapon6-status" value="Off">
+            <div class="weapon6">
+                <img name="attr_weapon6pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon7status" class="weapon7-status" value="Off">
+            <div class="weapon7">
+                <img name="attr_weapon7pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon8status" class="weapon8-status" value="Off">
+            <div class="weapon8">
+                <img name="attr_weapon8pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon9status" class="weapon9-status" value="Off">
+            <div class="weapon9">
+                <img name="attr_weapon9pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon10status" class="weapon10-status" value="Off">
+            <div class="weapon10">
+                <img name="attr_weapon10pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon11status" class="weapon11-status" value="Off">
+            <div class="weapon11">
+                <img name="attr_weapon11pic"/>
+            </div>
+            <input type="hidden" name="attr_weapon12status" class="weapon12-status" value="Off">
+            <div class="weapon12">
+                <img name="attr_weapon12pic"/>
+            </div>
+
+            <input type="hidden" name="attr_commandstatus" class="bridgepos-status" value="Off">
+            <div class="bridgepos">
+                <img src="https://files.d20.io/images/496308994/GW4sBu6r-mSS4TdiF9Y3Fw/thumb.png?1785782116"/>
+            </div>
+            <input type="hidden" name="attr_lifesupportstatus" class="lifepos-status" value="Off">
+            <div class="lifepos">
+                <img src="https://files.d20.io/images/496309008/Iyk9Ip8tjYrZyTAKYTYoIg/thumb.png?1785782123"/>
+            </div>
+            <input type="hidden" name="attr_warpcorestatus" class="warpcorepos-status" value="Off">
+            <div class="warpcorepos">
+                <img src="https://files.d20.io/images/496309011/Ozl3TjopgAhBQuBmTyaFEQ/thumb.png?1785782127"/>
+            </div>
+
+            <input type="hidden" name="attr_impulse1status" class="impulse1pos-status" value="Off">
+            <div class="impulse1pos">
+                <img src="https://files.d20.io/images/496312168/DnsA_n0Pfk9rOQrAQKVmBg/thumb.png?1785784343"/>
+            </div>
+            <input type="hidden" name="attr_impulse2status" class="impulse2pos-status" value="Off">
+            <div class="impulse2pos">
+                <img src="https://files.d20.io/images/496312168/DnsA_n0Pfk9rOQrAQKVmBg/thumb.png?1785784343"/>
+            </div>
+            <input type="hidden" name="attr_warpdrivestatus" class="warpdrivepos-status" value="Off">
+            <div class="warpdrivepos">
+                <img src="https://files.d20.io/images/496310701/kFfSEYTCH2zFJBgRpOgKVA/thumb.png?1785783292"/>
+            </div>
+
+            <input type="hidden" name="attr_screenstatus" class="screenpos-status" value="Off">
+            <div class="screenpos">
+                <img src="https://files.d20.io/images/496642751/GgZCMSFRF7SY0GVrmCUMSA/thumb.png?1786064085"/>
+            </div>
+            <input type="hidden" name="attr_firecontrolstatus" class="fireconpos-status" value="Off">
+            <div class="fireconpos">
+                <img alt="Fire Control" name="attr_fcimg"/>
+            </div>
+            <input type="hidden" name="attr_cloakstatus" class="cloakpos-status" value="Off">
+            <div class="cloakpos">
+                <img src="https://files.d20.io/images/496314212/R2m6YBqUv_PA1g50SukEgQ/thumb.png?1785785811"/>
+            </div>
+
+
+
+        </section>    
+
+        <section class="helm">
+            <h3>Helm</h3>
+            <h4>Current Speed: <span name="attr_speed"></span></h4>
+            <h4>Max Thrust: +/-<span name="attr_thrusters"></span></h4>
+            <h4>Max Turn: <span name="attr_turnpts"></span> Pts.</h4>
+        </section>
+
+
+        <section class="core">
+            <h3>Core Systems</h3>
+            <input type="hidden" name="attr_commandstatus" class="command-status" value="Red">
+            <div class="commandstatus">
+                <h4>Bridge: <span name="attr_command"></span></h4>
+            </div>
+
+            <input type="hidden" name="attr_lifesupportstatus" class="lifesupport-status" value="Red">
+            <div class="lifesupportstatus">
+                <h4>Life Support: <span name="attr_lifesupport"></span></h4>
+            </div>
+
+            <input type="hidden" name="attr_warpcorestatus" class="warpcore-status" value="Red">
+            <div class="warpcorestatus">
+                <h4>Warp Core: <span name="attr_warpcore"></span></h4>
+            </div>
+        </section>
+
+        <section class="eng">
+            <h3>Engineering</h3>
+            <input type="hidden" name="attr_warpdrivestatus" class="warpdrive-status" value="Green">
+            <div class="warpdrivestatus">
+                <h4>Warp Drive: <span name="attr_warpdrive"></span></h4>
+            </div>
+            <input type="hidden" name="attr_impulsestatus" class="impulse-status" value="Green">
+            <div class="impulsestatus">
+                <h4>Impulse Engines: <span name="attr_impulsedisplay"></span></h4>
+            </div>
+            <input type="hidden" name="attr_hullstatus" class="hull-status" value="Green">
+            <div class="hullstatus">
+                <h4>Hull Integrity: <span name="attr_hullpercent"></span>%</h4>
+            </div>
+            <input type="hidden" name="attr_screenstatus" class="screen-status" value="Green">
+            <div class="screenstatus">
+                <h4><span name="attr_screendisplay"></span></h4>
+            </div>
+            <input type="hidden" name="attr_shieldstatus" class="shield-status" value="Green">
+            <div class="shieldstatus">
+                <h4>Shields: <span name="attr_shieldpercent"></span></h4>
+            </div>
+            <input type="hidden" name="attr_armourstatus" class="armour-status" value="Green">
+            <div class="armourstatus">
+                <h4>Armour: <span name="attr_armour"></span></h4>
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+        <section class="ops">
+            <h3>OPS</h3>
+            <input type="hidden" name="attr_cloakstatus" class="cloak-status" value="Green">
+            <div class="cloakstatus">
+                <h4><span name="attr_cloakdisplay"></span></h4>
+            </div>
+            <input type="hidden" name="attr_firecontrolstatus" class="firecontrol-status" value="Green">
+            <div class="firecontrolstatus">
+                <h4><span name="attr_fcdisplay"></span></h4>
+            </div>
+            <input type="hidden" name="attr_crewstatus" class="crew-status" value="Green">
+            <div class="crewstatus">
+                <h4>Crew Level: <span name="attr_crew"></span></h4>
+            </div>
+        </section>
+
+        </main>
+      </div>
+    </div>    
+</div>
+
+
+
+
+
+<script type="text/worker">
+    const buttonlist = ["input","ship"];
+    var checked = 0;
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+
+    on("sheet:opened", function() {
+        setAttrs({sheetTab:"ship"});
+    });
+
+    on("change:attrs sheet:opened", function(eventInfo) { 
+        getAttrs(["faction","command","lifesupport","warpcore","hull","hull_max","advancedhull","screens","screens_max","advanceddrive","shields","shields_max","firecontrol","firecontrol_max","advancedfirecontrol", "armour","armour_max","damagedsystems", "thrusters_max","impulse1","impulse2", "crew","crew_max","warpdrive","weapon1location","weapon2location","weapon3location","weapon4location","weapon5location","weapon6location","weapon7location","weapon8location","weapon9location","weapon10location","weapon11location","weapon12location","bridgeloc","lifeloc","warpcoreloc","impulse1loc","impulse2loc","warpdriveloc","screenloc","sensorloc","fireconloc","cloakloc","cloak","torpedo","torpedo_max"], function(values) {
+            let commandstatus = "Green";
+            let command = values.command || "Nominal";
+            if (command === "Destroyed") {commandstatus = "Red"};
+            if (command.includes("Offline")) {commandstatus = "Orange"};
+
+            let lifesupportstatus = "Red";
+            let lifesupport = values.lifesupport || "Nominal";
+            if (lifesupport === "Nominal") {lifesupportstatus = "Green"};
+
+            let warpcorestatus = "Red";
+            let warpcore = values.warpcore || "Nominal";
+            if (warpcore === "Nominal") {warpcorestatus = "Green"};
+
+            let hullMax = parseInt(values.hull_max);
+            let hull = values.hull || hullMax;
+            hull = parseInt(hull);
+            let levels = 4;
+            if (values.advancedhull === "1") {levels = 3};
+            let hullpercent = Math.round(hull/hullMax * 100);
+            let hullLevel = Math.ceil(hull/hullMax * levels);
+            let hullColours = ["Dark Red","Red","Orange","Yellow","Green"];
+            let hullstatus = hullColours[hullLevel];
+            if (levels === 3 && hullLevel === 2) {hullstatus = "Red"};
+
+            
+            let crewStatus = "Green";
+            let crew = parseInt(values.crew);
+            let crewMax = parseInt(values.crew_max);
+            let crewPercent = Math.round(crew/crewMax * 100);
+            if (crewPercent < 100) {crewStatus = "Yellow"};
+            if (crewPercent < 66) {crewStatus = "Orange"};
+            if (crewPercent < 33) {crewStatus = "Red"};
+
+            let screens = parseInt(values.screens) || 0;
+            let screensMax = parseInt(values.screens_max) || 0;
+            let screenstatus = "Green";
+            let screendisplay = "Shield Generators: Nominal";
+            if (screens === 2 && screensMax === 2) {
+                screendisplay = "Shield Generators: Reinforced";
+            }
+            if (screensMax === 0) {
+                screenstatus = "None";
+                screendisplay = "";
+            } 
+            if (screens === 1 && screensMax === 2) {
+                screenstatus = "Yellow";
+                screendisplay = "Shield Generators: Level 1";
+            }
+            if (screens === 0 && screensMax > 0) {
+                screenstatus = "Red";
+                screendisplay = "Shield Generators: Offline";
+            }
+
+            let armourMax = parseInt(values.armour_max) || 0;
+            let armour = parseInt(values.armour) || 0;
+            let armourStatus = "Green";
+            if (armour < armourMax && armour > 0) {
+                armourStatus = "Yellow";
+            }
+            if (armour === 0 && armourMax > 0) {
+                armourStatus = "Red";
+            }
+            if (armourMax === 0) {
+                armourStatus = "None";
+            }
+
+
+
+            let shieldstatus = "Green";
+            let shieldsMax = parseInt(values.shields_max);
+            let shields = parseInt(values.shields);
+
+            if (screenstatus === "Red") {
+                shields = 0;
+            }
+
+            let shieldPercent = Math.round(shields/shieldsMax * 100);
+            if (shieldPercent <= 75) {shieldstatus = "Yellow"};
+            if (shieldPercent <= 50) {shieldstatus = "Orange"};
+            if (shieldPercent <= 25) {shieldstatus = "Red"};
+            shieldPercent += "%";
+
+            if (shields === 0 && shieldsMax > 0) {
+                shieldstatus = "Down"
+                shieldPercent = "Down";
+            };
+            if (shieldsMax === 0) {
+                shieldstatus = "None";
+            }
+
+            let firecontrolstatus = "Green";
+            let fcMax = parseInt(values.firecontrol_max);
+            let fc = values.firecontrol || 0;
+            fc = parseInt(fc) || 0;
+            if (fc < fcMax) {firecontrolstatus = "Yellow"};
+            let advFC = values.advancedfirecontrol;
+            fcDisplay = "Fire Control: " + fc;
+            fcimg = "https://files.d20.io/images/496442199/ZWeVnItTMAG0VtCPAFimvg/thumb.png?1785890622";
+            if (advFC === "1") {
+                fcDisplay = "Adv. Fire Control: " + (fc * 2);
+                fcimg = "https://files.d20.io/images/496442200/JCLlyg_05ccvriJpaPBpRA/thumb.png?1785890623";
+            }
+            if (fc === 0) {
+                fcDisplay = "Fire Control Offline"
+                firecontrolstatus = "Red"
+            };
+
+            let cloakstatus = "None";
+            let cloakdisplay;
+            let cloak = values.cloak;
+            if (cloak === "Nominal") {
+                cloakstatus = "Green";
+                cloakdisplay = "Cloaking Device: Nominal"
+            }
+            if (cloak === "Offline") {
+                cloakstatus = "Red";
+                cloakdisplay = "Cloaking Device: Offline";
+            }
+
+
+
+    
+            let wpn1Loc = "pos" + values.weapon1location;
+            if (wpn1Loc) {
+                $20(`div[class = "weapon1"]`).addClass(wpn1Loc);
+            }
+            let wpn2Loc = "pos" + values.weapon2location;
+            if (wpn2Loc) {
+                $20(`div[class = "weapon2"]`).addClass(wpn2Loc);
+            }
+            let wpn3Loc = "pos" + values.weapon3location;
+            if (wpn2Loc) {
+                $20(`div[class = "weapon3"]`).addClass(wpn3Loc);
+            }
+            let wpn4Loc = "pos" + values.weapon4location;
+            if (wpn4Loc) {
+                $20(`div[class = "weapon4"]`).addClass(wpn4Loc);
+            }
+            let wpn5Loc = "pos" + values.weapon5location;
+            if (wpn5Loc) {
+                $20(`div[class = "weapon5"]`).addClass(wpn5Loc);
+            }
+            let wpn6Loc = "pos" + values.weapon6location;
+            if (wpn6Loc) {
+                $20(`div[class = "weapon6"]`).addClass(wpn6Loc);
+            }
+            let wpn7Loc = "pos" + values.weapon7location;
+            if (wpn7Loc) {
+                $20(`div[class = "weapon7"]`).addClass(wpn7Loc);
+            }
+            let wpn8Loc = "pos" + values.weapon8location;
+            if (wpn8Loc) {
+                $20(`div[class = "weapon8"]`).addClass(wpn8Loc);
+            }
+            let wpn9Loc = "pos" + values.weapon9location;
+            if (wpn9Loc) {
+                $20(`div[class = "weapon9"]`).addClass(wpn9Loc);
+            }
+            let wpn10Loc = "pos" + values.weapon10location;
+            if (wpn10Loc) {
+                $20(`div[class = "weapon10"]`).addClass(wpn10Loc);
+            }
+            let wpn11Loc = "pos" + values.weapon11location;
+            if (wpn11Loc) {
+                $20(`div[class = "weapon11"]`).addClass(wpn11Loc);
+            }
+            let wpn12Loc = "pos" + values.weapon12location;
+            if (wpn12Loc) {
+                $20(`div[class = "weapon12"]`).addClass(wpn12Loc);
+            }
+
+            let bridgeLoc = "pos" + values.bridgeloc;
+            if (bridgeLoc) {
+                $20(`div[class = "bridgepos"]`).addClass(bridgeLoc);
+            }
+            let lifeLoc = "pos" + values.lifeloc;
+            if (lifeLoc) {
+                $20(`div[class = "lifepos"]`).addClass(lifeLoc);
+            }
+            let warpcoreLoc = "pos" + values.warpcoreloc;
+            if (warpcoreLoc) {
+                $20(`div[class = "warpcorepos"]`).addClass(warpcoreLoc);
+            }
+
+            let warpdriveLoc = "pos" + values.warpdriveloc;
+            if (warpdriveLoc) {
+                $20(`div[class = "warpdrivepos"]`).addClass(warpdriveLoc);
+            }
+            let impulse1Loc = "pos" + values.impulse1loc;
+            if (impulse1Loc) {
+                $20(`div[class = "impulse1pos"]`).addClass(impulse1Loc);
+            }
+            let impulse2Loc = "pos" + values.impulse2loc;
+            if (impulse2Loc) {
+                $20(`div[class = "impulse2pos"]`).addClass(impulse2Loc);
+            }
+
+            let screenLoc = "pos" + values.screenloc;
+            if (screenLoc) {
+                $20(`div[class = "screenpos"]`).addClass(screenLoc);
+            }
+            let sensorLoc = "pos" + values.sensorloc;
+            if (sensorLoc) {
+                $20(`div[class = "sensorpos"]`).addClass(sensorLoc);
+            }
+            let fireconLoc = "pos" + values.fireconloc;
+            if (fireconLoc) {
+                $20(`div[class = "fireconpos"]`).addClass(fireconLoc);
+            }
+            let cloakLoc = "pos" + values.cloakloc;
+            if (cloakLoc) {
+                $20(`div[class = "cloakpos"]`).addClass(cloakLoc);
+            }
+
+
+            let ds = values.damagedsystems || "All Systems Nominal";
+            ds = ds.split(",").map((e) => e.trim());
+            let damagedsystems = [];
+            for (let i=0;i<12;i++) {
+                let sys = ds[i] || "None";
+                damagedsystems.push(sys);
+            }
+
+            let thrusters = parseInt(values.thrusters_max);
+            let impulse1 = values.impulse1;
+            let impulse2 = values.impulse2;
+            let impulsestatus = "Green";
+            let impulse1status = "Green";
+            let impulse2status = "Green";
+            let impulsedisplay = "Nominal";
+            if (impulse1 === "Offline" && impulse2 !== "Offline") {
+                impulse1status = "Red";
+                thrusters = Math.round(thrusters/2);
+                impulsestatus = "Yellow";
+                impulsedisplay = "Damaged";
+            }
+            if (impulse2 === "Offline" && impulse1 !== "Offline") {
+                impulse2status = "Red";
+                thrusters = Math.round(thrusters/2);
+                impulsestatus = "Yellow";
+                impulsedisplay = "Damaged";
+            }
+            if (impulse1 === "Offline" && impulse2 === "Offline") {
+                thrusters = 0;
+                impulsestatus = "Red";
+                impulsedisplay = "Offline"
+                impulse1status = "Red";
+                impulse2status = "Red";
+            }
+        
+            let turn = 2;
+            if (values.advanceddrives === "1") {
+                turn = 1;
+            }
+            let turnPts = Math.round(thrusters/turn);
+console.log("Thrusters")
+console.log(thrusters)
+console.log(turn)
+            let faction = values.faction;
+            let factionsymbol = "";
+            if (faction === "Klingon") {
+                factionsymbol = "https://files.d20.io/images/494961715/XBNJxsAasyGU_WX5Ub4XyQ/thumb.png?1784771002";
+            }
+            if (faction === "Federation") {
+                factionsymbol = "https://files.d20.io/images/498184636/xPwctq1zJWUUvFPfxQQtFw/thumb.png?1787249460";
+            }
+
+            let warpdrive = values.warpdrive || "Nominal";
+            let warpdrivestatus = "Green";
+            if (warpdrive === "Offline") {
+                warpdrivestatus = "Red"
+            }
+
+            setAttrs({
+                commandstatus: commandstatus,
+                lifesupportstatus: lifesupportstatus,
+                warpcorestatus: warpcorestatus,
+                hullstatus: hullstatus,
+                shieldstatus: shieldstatus,
+                firecontrolstatus: firecontrolstatus,
+                damaged1: damagedsystems[0],
+                damaged2: damagedsystems[1],
+                damaged3: damagedsystems[2],
+                damaged4: damagedsystems[3],
+                damaged5: damagedsystems[4],
+                damaged6: damagedsystems[5],
+                damaged7: damagedsystems[6],
+                damaged8: damagedsystems[7],
+                damaged9: damagedsystems[8],
+                damaged10: damagedsystems[9],
+                thrusters: thrusters,
+                turnpts: turnPts,
+                factionsymbol: factionsymbol,
+                fcdisplay: fcDisplay,
+                shieldpercent: shieldPercent,
+                hullpercent: hullpercent,
+                warpdrivestatus: warpdrivestatus,
+                impulsestatus: impulsestatus,
+                impulse1status: impulse1status,
+                impulse2status: impulse2status,
+                screenstatus: screenstatus,
+                impulsedisplay: impulsedisplay,
+                crewstatus: crewStatus,
+                cloakstatus: cloakstatus,
+                cloakdisplay: cloakdisplay,
+                screendisplay: screendisplay,
+                fcimg: fcimg,
+                armourstatus: armourStatus,
+            });
+        });
+    });
+</script>
