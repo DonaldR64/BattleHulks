@@ -337,7 +337,8 @@ input[type="hidden"][value="Red"].short-status ~ .shortinfo {
   grid-row: 4/-1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;   
+  background-color: white;
 }
 .medinfo h3{
   color: black;
@@ -355,6 +356,7 @@ input[type="hidden"][value="Red"].med-status ~ .medinfo {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 .longinfo h3{
   color: black;
