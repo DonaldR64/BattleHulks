@@ -30,15 +30,15 @@ main {
     width: 800px;
     height: 500px;
     grid-gap: 4px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:"info       info    info    info    pic       pic"
-                        "stats      heat    armour  structure pic       pic"
-                        "weapons    weapons weapons weapons pic       pic"
-                        "weapons    weapons weapons weapons criticals criticals"
-                        "special    special special special criticals criticals"
-                        "special    special special special criticals criticals";
-  }
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(6,1fr);
+    grid-template-areas:"info     info  info info    info    info       pic pic pic pic"
+                        "skill    move  tmm  heat    armour  structure pic pic pic pic"
+                        "weapons    weapons weapons weapons  weapons  weapons pic pic pic pic"
+                        "weapons    weapons weapons weapons  weapons  weapons pic pic pic pic"
+                        "special    special special special special special criticals criticals criticals criticals"
+                        "special    special special special special special criticals criticals criticals criticals";
+    }
 
 
 /*----------------- GENERAL CSS ------------------*/
@@ -114,19 +114,26 @@ section {
     background-color:  white;
   }
 
-.stats {
-    grid-area: stats;
+.skill {
+    grid-area: skill;
     flex-direction: center;
     background-color:  white;
   }
-
+.move {
+    grid-area: move;
+    flex-direction: center;
+    background-color:  white;
+  }
+.tmm {
+    grid-area: tmm;
+    flex-direction: center;
+    background-color:  white;
+  }
 .heat {
     grid-area: heat;
     flex-direction: center;
     background-color:  white;
   }
-
-
 .armour {
     grid-area: armour;
     flex-direction: center;
