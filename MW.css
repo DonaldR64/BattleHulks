@@ -322,7 +322,15 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   align-items: center;
     background-color: white;
 }
-
+.shortinfo h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].short-status ~ .shortinfo {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].short-status ~ .shortinfo {
+    background-color: red;
+}
 
 .medinfo {
   grid-column: 2/3;
@@ -331,7 +339,15 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
-
+.medinfo h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].med-status ~ .medinfo {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].med-status ~ .medinfo {
+    background-color: red;
+}
 
 .longinfo {
   grid-column: 3/-1;
@@ -340,7 +356,15 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
-
+.longinfo h3{
+  color: black;
+}
+input[type="hidden"][value="Yellow"].long-status ~ .longinfo {
+    background-color: yellow;
+}
+input[type="hidden"][value="Red"].long-status ~ .longinfo {
+    background-color: red;
+}
 
 .specialtitle {
   grid-column: 1/-1;

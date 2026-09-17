@@ -252,13 +252,16 @@
                     <div class="longtitle">
                         <h3>Long [+4]</h3>
                     </div>
-                    <div class="shortinfo redtext">
+                    <input type="hidden" name="attr_shortstatus" class="short-status" value="White">
+                    <div class="shortinfo">
                         <h3><span name="attr_damShort"></span></h3>
                     </div>
-                    <div class="mediuminfo redtext">
+                    <input type="hidden" name="attr_medstatus" class="med-status" value="White">
+                    <div class="mediuminfo">
                         <h3><span name="attr_damMed"></span></h3>
                     </div>
-                    <div class="longinfo redtext">
+                    <input type="hidden" name="attr_longstatus" class="long-status" value="White">
+                    <div class="longinfo">
                         <h3><span name="attr_damLong"></span></h3>
                     </div>
                 </section>
@@ -390,6 +393,30 @@
             if (structure < structureMax/2) {
                 structureStatus = "Red";
             } 
+            let shortStatus = "White";
+            if (damShort > 0 && damShort < damShortMax) {
+                shortStatus = "Yellow";
+            }
+            if (damShort === 0) {
+                shortStatus = "Red";
+            }
+            let medStatus = "White";
+            if (damMed > 0 && damMed < damShortMax) {
+                medStatus = "Yellow";
+            }
+            if (damMed === 0) {
+                medStatus = "Red";
+            }
+            let longStatus = "White";
+            if (damLong > 0 && damLong < damShortMax) {
+                longStatus = "Yellow";
+            }
+            if (damLong === 0) {
+                longStatus = "Red";
+            }
+
+
+
 
 
             setAttrs({
@@ -416,6 +443,10 @@
                 "damLong": damLong,
                 "armourstatus": armourStatus,
                 "structurestatus": structureStatus,
+                "shortstatus": shortStatus,
+                "medstatus": medStatus,
+                "longstatus": longStatus,
+
 
             });
 
