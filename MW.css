@@ -33,7 +33,7 @@ main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:"info       info    info    info    pic       pic"
-                        "stats      stats   defense defense pic       pic"
+                        "stats      heat    armour  structure pic       pic"
                         "weapons    weapons weapons weapons pic       pic"
                         "weapons    weapons weapons weapons criticals criticals"
                         "special    special special special criticals criticals"
@@ -120,12 +120,26 @@ section {
     background-color:  white;
   }
 
-.defense {
-    grid-area: defense;
+.heat {
+    grid-area: heat;
+    flex-direction: center;
+    background-color:  white;
+  }
+
+
+.armour {
+    grid-area: armour;
     flex-direction: center;
     background-color:  white;
   }
   
+.structure {
+    grid-area: structure;
+    flex-direction: center;
+    background-color:  white;
+  }
+
+
 .weapons {
     grid-area: weapons;
     display: grid;
