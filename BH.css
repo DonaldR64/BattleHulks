@@ -34,7 +34,7 @@ main {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:"info       stats"
                         "info       stats"
-                        "structure  structure"
+                        "structure  armour"
                         "weapons    weapons"
                         "weapons    weapons";
   }
@@ -125,6 +125,13 @@ section {
     background-color:  white;
   }
   
+.armour {
+    grid-area: armour;
+    flex-direction: center;
+    background-color:  white;
+  }
+
+
 .weapons {
     grid-area: weapons;
     background-color:  white;
