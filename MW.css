@@ -320,9 +320,10 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   display: flex;
   justify-content: center;
   align-items: center;
-    background-color: red;
-
+    background-color: white;
 }
+
+
 .medinfo {
   grid-column: 2/3;
   grid-row: 4/-1;
@@ -330,6 +331,8 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
+
+
 .longinfo {
   grid-column: 3/-1;
   grid-row: 4/-1;
@@ -338,15 +341,6 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   align-items: center;
 }
 
-.shortinfo h3{
-    color: darkred;
-}
-.medinfo h3{
-    color: darkred;
-}
-.longinfo h3{
-    color: darkred;
-}
 
 .specialtitle {
   grid-column: 1/-1;
