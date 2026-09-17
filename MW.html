@@ -175,7 +175,7 @@
                     </div>
                 </section>
 
-
+                <input type="hidden" name="attr_heatstatus" class="heat-status" value="White">
                 <section class="heat f-center">
                     <h3>Heat</h3>
                     <div class="redtext">
@@ -313,7 +313,8 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel'], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat'], function(values) {
+            
             let engine1 = parseInt(values.enginecrit) === 1 ? "🟥":"🟩";
             let fc1 = parseInt(values.fccritlevel) >= 1 ? "🟥":"🟩";
             let fc2 = parseInt(values.fccritlevel) >= 2 ? "🟥":"🟩";
@@ -327,6 +328,12 @@
             let wp2 = parseInt(values.wpcritlevel) >= 2 ? "🟥":"🟩";
             let wp3 = parseInt(values.wpcritlevel) >= 3 ? "🟥":"🟩";
             let wp4 = parseInt(values.wpcritlevel) === 4 ? "🟥":"🟩";
+
+            let heatstatus = "White";
+            if (heat === 1) {heatstatus = "Yellow"};
+            if (heat === 2) {heatstatus = "Orange"};
+            if (heat === 3) {heatstatus = "Red"};
+            if (heat === 4) {heatstatus = "Black"};
 
 
             setAttrs({
@@ -343,6 +350,7 @@
                 "wp2": wp2,
                 "wp3": wp3,
                 "wp4": wp4,
+                "heatcolour": heatcolour,
 
             });
 
