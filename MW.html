@@ -143,7 +143,7 @@
         <div class="attributes">
             <main>
                 <section class="info f-center">
-                    <h1><span name="attr_character_name"></span></h1>
+                    <h1><span name="attr_name"></span></h1>
                     <h3><span name="attr_variant"></span> Variant <span name="attr_size"></span> <span name="attr_type"></span></h3>
                     <h3><span name="attr_faction"></span> <span name="attr_role"></span></h3>
                 </section>
@@ -320,8 +320,10 @@
     });
 
     on("sheet:opened", function() {
-        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max","damShort_max","damMed_max","damLong_max","armour","armour_max","structure","structure_max"], function(values) {
+        getAttrs(["enginecrit",'fccritlevel','mpcritlevel','wpcritlevel','heat','move_max',"tmm_max","damShort_max","damMed_max","damLong_max","armour","armour_max","structure","structure_max","character_name"], function(values) {
             
+            let name = values.character_name;
+            name = name.split("//")[0].trim();
             let engineCrit = parseInt(values.enginecrit);
             let fcCrit = parseInt(values.fccritlevel);
             let mpCrit = parseInt(values.mpcritlevel);
@@ -425,6 +427,7 @@
 
 
             setAttrs({
+                "name": name,
                 "engine1": engine1,
                 "fc1": fc1,
                 "fc2": fc2,
