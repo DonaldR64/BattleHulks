@@ -279,6 +279,10 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   justify-content: center;
   align-items: center;
 }
+.weapontitle h3{
+  font-weight: bold;
+}
+
 .weaponinfo {
   grid-column: 1/3;
   grid-row: 2/3;
@@ -386,6 +390,10 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo {
   justify-content: center;
   align-items: center;
 }
+.specialtitle h3{
+  font-weight: bold;
+}
+
 .specialinfo1 {
   grid-column: 1/2;
   grid-row: 2/3;
@@ -441,6 +449,11 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.crittitle h3{
+  font-weight: bold;
 }
 
 .enginecrit {
