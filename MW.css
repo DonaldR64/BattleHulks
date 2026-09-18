@@ -503,6 +503,11 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   align-items: center;
   padding: 3px;
 }
+.fccrit img{
+    width: 16px;
+    height: 16px;
+}
+
 
 .mpcrit {
   display: grid;
@@ -513,6 +518,10 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   align-items: center;
   padding: 3px;
 }
+.mpcrit img{
+    width: 16px;
+    height: 16px;
+}
 
 .wpcrit {
   display: grid;
@@ -522,4 +531,8 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   text-align: left;
   align-items: center;
   padding: 3px;
+}
+.wpcrit img{
+    width: 16px;
+    height: 16px;
 }
