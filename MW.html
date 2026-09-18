@@ -68,8 +68,37 @@
             <label>Max Damage - Med Range:</label><input type="text" name="attr_damMed_max">
             <label>Max Damage - Long Range:</label><input type="text" name="attr_damLong_max">
             <label>Direct Weapon FX:</label><input type="text" name="attr_wpnFX">
-            <label>Direct Weapon Sound:</label><input type="text" name="attr_wpnSound">
-            <label>Indirect Weapon FX:</label><input type="text" name="attr_indWpnFX">
+            <label for="attr_wpnSound">Weapon Sound:</label>
+            <select name="attr_wpnSound">
+                <option value="Small Laser">Small Laser</option>
+                <option value="Medium Laser">Medium Laser</option>
+                <option value="Large Laser">Large Laser</option>
+                <option value="Pulse Laser">Pulse Laser</option>
+                <option value="Gauss">Gauss</option>
+                <option value="Autocannon">Autocannon</option>
+                <option value="MG">MG</option>
+                <option value="Minigun">Minigun</option>
+                <option value="PPC">PPC</option>
+                <option value="SRM">SRM</option>
+                <option value="LRM">LRM</option>
+                <option value="Flamer">Flamer</option>
+            </select>
+            <label for="attr_wpnFX">Weapon FX:</label>
+            <select name="attr_wpnFX">
+                <option value="Custom-Laser">Small Laser</option>
+                <option value="Custom-Laser">Medium Laser</option>
+                <option value="Custom-GreenLaser">Large Laser</option>
+                <option value="Custom-GreenLaser">Pulse Laser</option>
+                <option value="missile-death">Gauss</option>
+                <option value="missile-smoke">Autocannon</option>
+                <option value="Custom-Solid">MG</option>
+                <option value="Custom-Solid">Minigun</option>
+                <option value="Custom-PPC">PPC</option>
+                <option value="rocket-smoke">SRM</option>
+                <option value="rocket-death">LRM</option>
+                <option value="breath-fire">Flamer</option>
+            </select>
+
             <label>Indirect Weapon Sound:</label><input type="text" name="attr_indWpnSound">
         </div>
         <div class="col">
