@@ -335,10 +335,10 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
   display: flex;
   justify-content: center;
   align-items: center;
-    background-color: white;
+  background-color: white;
 }
 .shortinfo h3{
-  color: black;
+  color: darkred;
 }
 input[type="hidden"][value="Yellow"].short-status ~ .shortinfo {
     background-color: yellow;
@@ -346,6 +346,14 @@ input[type="hidden"][value="Yellow"].short-status ~ .shortinfo {
 input[type="hidden"][value="Red"].short-status ~ .shortinfo {
     background-color: red;
 }
+input[type="hidden"][value="Yellow"].short-status ~ .shortinfo h3{
+    color: black;
+}
+input[type="hidden"][value="Red"].short-status ~ .shortinfo h3{
+    color: black;
+}
+
+
 
 .medinfo {
   grid-column: 2/3;
@@ -356,7 +364,7 @@ input[type="hidden"][value="Red"].short-status ~ .shortinfo {
   background-color: white;
 }
 .medinfo h3{
-  color: black;
+  color: darkred;
 }
 input[type="hidden"][value="Yellow"].med-status ~ .medinfo {
     background-color: yellow;
@@ -364,6 +372,13 @@ input[type="hidden"][value="Yellow"].med-status ~ .medinfo {
 input[type="hidden"][value="Red"].med-status ~ .medinfo {
     background-color: red;
 }
+input[type="hidden"][value="Yellow"].med-status ~ .medinfo h3{
+    color: black;
+}
+input[type="hidden"][value="Red"].med-status ~ .medinfo h3{
+    color: black;
+}
+
 
 .longinfo {
   grid-column: 3/-1;
@@ -374,7 +389,7 @@ input[type="hidden"][value="Red"].med-status ~ .medinfo {
   background-color: white;
 }
 .longinfo h3{
-  color: black;
+  color: darkred;
 }
 input[type="hidden"][value="Yellow"].long-status ~ .longinfo {
     background-color: yellow;
@@ -382,6 +397,14 @@ input[type="hidden"][value="Yellow"].long-status ~ .longinfo {
 input[type="hidden"][value="Red"].long-status ~ .longinfo {
     background-color: red;
 }
+input[type="hidden"][value="Yellow"].long-status ~ .longinfo h3{
+    color: black;
+}
+input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
+    color: black;
+}
+
+
 
 .specialtitle {
   grid-column: 1/-1;
