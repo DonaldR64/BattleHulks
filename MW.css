@@ -257,7 +257,7 @@ input[type="hidden"][value="Red"].structure-status ~ .structure {
 
 .criticals {
     grid-area: criticals;
-    align-items: left;
+    flex-direction: center;
     background-color:  white;
   }
   
