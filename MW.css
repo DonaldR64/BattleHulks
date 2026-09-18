@@ -485,7 +485,7 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 1;
   text-align: left;
-  align-items: center;
+  align-items: left;
   padding: 3px;
 }
 
@@ -495,7 +495,7 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
   text-align: left;
-  align-items: center;
+  align-items: left;
   padding: 3px;
 }
 
@@ -505,7 +505,7 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
   text-align: left;
-  align-items: center;
+  align-items: left;
   padding: 3px;
 }
 
@@ -515,6 +515,6 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1;
   text-align: left;
-  align-items: center;
+  align-items: left;
   padding: 3px;
 }
