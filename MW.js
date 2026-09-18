@@ -7,7 +7,7 @@ const Main = (() => {
 
     let HexSize, HexInfo, DIRECTIONS;
     let MapInfo = {};
-    let Units = {};
+    let UnitArray = {};
 
     //math constants
     const M = {
@@ -110,23 +110,10 @@ const Main = (() => {
 
 
     //terrain that is single object
-    //blockLOS - 
-    // blockLOS - # of hexes past that can be seen, height - stories
+
     const TerrainInfo = {
-        "Trench": {cover: true, conceal: true, blockLOS: false, height: 0,interCover: 0, type: "Very Difficult"},
-        "Building 1 Storey": {cover: true, conceal: true, blockLOS: 1, height: 1, type: "Very Difficult"},
-        "Building 2 Storey": {cover: true, conceal: true, blockLOS: 1, height: 2, type: "Very Difficult"},
-        "Woods": {cover: false, conceal: true, blockLOS: 2, height: 3, type: "Difficult"},
-        "Fields": {cover: false, conceal: "Infantry", blockLOS: false, height: 0,  type: "Difficult"},
-        "Road": {cover: false, conceal: false, blockLOS: false, height: 0,  type: "Road"},
-    }
 
-    const EdgeInfo = {
-        "Bocage": {cover: true, conceal: true, blockLOS: 1, height: 2},
-        "Hedge": {cover: false, conceal: true, blockLOS: false, height: 0},
-        "Wall": {cover: true, conceal: true, blockLOS: false, height: 0},
     }
-
 
     //height is #, corresponds to 1 story per #
     const HillInfo = {
@@ -698,7 +685,7 @@ const Main = (() => {
 
     }
 
-    class Team {
+    class Unit {
         constructor(id) {
             let token = findObjs({_type:"graphic", id: id})[0];
             let cube = (new Point(token.get("left"),token.get("top"))).toCube();
@@ -711,7 +698,7 @@ const Main = (() => {
             this.charName = char.get("name");
             let name = token.get("name");
             if (!name || name === "") {
-                name = this.charName.split("//")[0].trim();
+                name = this.charName;
             }
             this.name = name;
             this.hexLabel = label;
@@ -725,8 +712,8 @@ const Main = (() => {
                 if (faction === "Neutral") {
                     player = 2
                 } else {
-                    state.MW.faction.push(faction);
-                    player = state.MW.faction.length - 1;
+                    state.MW.factions.push(faction);
+                    player = state.MW.factions.length - 1;
                 }
             }
             this.player = player;
@@ -747,7 +734,7 @@ const Main = (() => {
             }
 
 
-            Units[id] = this;    
+            UnitArray[id] = this;    
     
         }
 
@@ -820,9 +807,9 @@ const Main = (() => {
         if (newObj) {return newObj.id};
     }    
 
-    const AddAbilities = (team) => {
+    const AddAbilities = (unit) => {
         let abilityName,action;
-        let abilArray = findObjs({_type: "ability", _characterid: team.charID});
+        let abilArray = findObjs({_type: "ability", _characterid: unit.charID});
         //clear old abilities
         for(let a=0;a<abilArray.length;a++) {
             abilArray[a].remove();
@@ -1083,7 +1070,7 @@ const Main = (() => {
                 halfToggleY = -halfToggleY;
             }
         }
-        AddTerrain();    
+        //AddTerrain();    
         AddTokens();
         DefineMap();
         let elapsed = Date.now()-startTime;
@@ -1102,7 +1089,7 @@ const Main = (() => {
     }
      
     const AddTokens = () => {
-        Units = {};
+        UnitArray = {};
         //create an array of all tokens on both maps
         let tokens = findObjs({
             _pageid: Campaign().get("playerpageid"),
@@ -1115,7 +1102,7 @@ const Main = (() => {
         tokens.forEach((token) => {
             let character = getObj("character", token.get("represents"));   
             if (character) {
-                let team = new Team(token.get("id"));
+                let unit = new Unit(token.get("id"));
                 s++;
             }
         });
@@ -1339,21 +1326,21 @@ const Main = (() => {
             sendChat("","Select a Token First");
             return;
         }
-        let team = Units[msg.selected[0]._id];
-        if (!team) {
-            sendChat("","Not in Units");
+        let unit = UnitArray[msg.selected[0]._id];
+        if (!unit) {
+            sendChat("","Not in UnitArray");
             return;
         };
-        let label = team.hexLabel;
+        let label = unit.hexLabel;
         let hex = HexMap[label];
-        SetupCard(team.name,"Info",team.faction);
-        let status = team.Status();
+        SetupCard(unit.name,"Info",unit.faction);
+        let status = unit.Status();
         outputCard.body.push("Status: " + status);
 
         outputCard.body.push("[hr]");
         outputCard.body.push("Hex Label: " + label);
-        if (team.Offmap()) {
-            outputCard.body.push("Team is Off Map");
+        if (unit.Offmap()) {
+            outputCard.body.push("Unit is Off Map");
         }
         let s = hex.elevation === 1 ? " Storey":" Stories"
         let elevation = hex.elevation === 0 ? "Ground Level":hex.elevation + s;
@@ -1390,7 +1377,7 @@ const Main = (() => {
         PlaySound("Dice");
         let roll = randomInteger(6);
         let playerID = msg.playerid;
-        let id,team,player;
+        let id,unit,player;
         if (msg.selected) {
             id = msg.selected[0]._id;
         }
@@ -1400,13 +1387,13 @@ const Main = (() => {
             return;
         }
         if (id) {
-            team = Units[id];
-            if (team) {
-                faction = team.faction;
-                player = team.player;
+            unit = UnitArray[id];
+            if (unit) {
+                faction = unit.faction;
+                player = unit.player;
             }
         }
-        if ((!id || !team) && playerID) {
+        if ((!id || !unit) && playerID) {
             faction = state.MW.players[playerID];
             player = (state.MW.faction[0] === faction) ? 0:1;
         }
@@ -1436,11 +1423,11 @@ const Main = (() => {
         BuildMap();
 
         //clear arrays
-        Units = {};
+        UnitArray = {};
 
         state.MW = {
             players: {},
-            faction: [],
+            factions: [],
             turn: 0,
             currentPlayer: 2,
             firstPlayer: 2,
@@ -1477,8 +1464,8 @@ const Main = (() => {
 
     const CheckLOS = (msg) => {
         let Tag = msg.content.split(";");
-        let shooter = Units[Tag[1]];
-        let target = Units[Tag[2]];
+        let shooter = UnitArray[Tag[1]];
+        let target = UnitArray[Tag[2]];
 
         if (!shooter) {
             sendChat("","Not valid shooter");
@@ -1508,7 +1495,7 @@ const Main = (() => {
                 outputCard.body.push("Target is Concealed");
             }
         }
-        if (shooter.type.includes("Team") === false) {
+        if (shooter.type.includes("Unit") === false) {
             let verb = (losResult.forwardArc) ? " is ": " is NOT ";
             outputCard.body.push("The Target " + verb + " in the Forward Arc");
         }
@@ -1572,19 +1559,19 @@ const Main = (() => {
                     }
                 }
 
-                //Intervening Friendly Units at same elevation
+                //Intervening Friendly UnitArray at same elevation
                 if (interHex.tokenIDs.length > 0 && interHex.label !== targetHex.label) {
-                    let team2 = Units[interHex.tokenIDs[0]];
-                    if (team2.faction === shooter.faction && shooterHeight === interHex.elevation && team2.platoonID !== shooter.platoonID) {
-                        if (shooter.type.includes("Team")  && team2.type.includes( "Team")) {
+                    let unit2 = UnitArray[interHex.tokenIDs[0]];
+                    if (unit2.faction === shooter.faction && shooterHeight === interHex.elevation && unit2.platoonID !== shooter.platoonID) {
+                        if (shooter.type.includes("Unit")  && unit2.type.includes( "Unit")) {
                             los[side] = false;
-                            losReason[side] = team2.name;
+                            losReason[side] = unit2.name;
                             blockedHexLabels[side] = interHex.label;
                             break;
                         }
-                        if (shooter.type.includes("Team") === false && team2.type.includes("Team") === false) {
+                        if (shooter.type.includes("Unit") === false && unit2.type.includes("Unit") === false) {
                             los[side] = false;
-                            losReason[side] = team2.name;
+                            losReason[side] = unit2.name;
                             blockedHexLabels[side] = interHex.label;
                             break;
                         }
@@ -1603,7 +1590,7 @@ const Main = (() => {
                     if (interHex.conceal === true) {
                         interConceal[side] = true;
                     }
-                    if (interHex.conceal === "Infantry" && interConceal[side] === false && target.type.includes("Team")) {
+                    if (interHex.conceal === "Infantry" && interConceal[side] === false && target.type.includes("Unit")) {
                         interConceal[side] = true;
                     }
                     if (interHex.blockLOS === false && blocking > 0){
@@ -1684,7 +1671,7 @@ const Main = (() => {
 
         let cover = targetHex.cover;
         let conceal = targetHex.conceal;
-        if (conceal === "Infantry" && target.type.includes("Team")) {
+        if (conceal === "Infantry" && target.type.includes("Unit")) {
             conceal = true;
         }
 
@@ -1718,20 +1705,20 @@ const Main = (() => {
 
 
     const changeGraphic = (tok,prev) => {
-        let team = Units[tok.id];
+        let unit = UnitArray[tok.id];
         let newLabel = new Point(tok.get("left"),tok.get("top")).toCube().label();
         let prevLabel = new Point(prev.left,prev.top).toCube().label();
-        if (team && newLabel !== prevLabel) {
-            log(team.name + " moving")
+        if (unit && newLabel !== prevLabel) {
+            log(unit.name + " moving")
             let index = HexMap[prevLabel].tokenIDs.indexOf(tok.id);
             if (index > -1) {
                 HexMap[prevLabel].tokenIDs.splice(index,1);
                 HexMap[newLabel].tokenIDs.push(tok.id);
             }
-            team.hexLabel = newLabel;
+            unit.hexLabel = newLabel;
         } 
-        if (team && tok.get("rotation") !== prev.rotation) {
-            log(team.name + " turning")
+        if (unit && tok.get("rotation") !== prev.rotation) {
+            log(unit.name + " turning")
             let phi = Angle(tok.get("rotation"));
             phi = Math.round(phi/30) * 30;
             tok.set("rotation",phi);
@@ -1741,14 +1728,14 @@ const Main = (() => {
     const destroyGraphic = (obj) => {
         let id = obj.get("id");
         if (id) {
-            let team = Units[id];
-            if (team) {
-                log(team.name + " removed from Team Array")
-                let index = HexMap[team.hexLabel].tokenIDs.indexOf(id);
+            let unit = UnitArray[id];
+            if (unit) {
+                log(unit.name + " removed from Unit Array")
+                let index = HexMap[unit.hexLabel].tokenIDs.indexOf(id);
                 if (index > -1) {
-                    HexMap[team.hexLabel].tokenIDs.splice(index,1);
+                    HexMap[unit.hexLabel].tokenIDs.splice(index,1);
                 }
-                delete Units[id];
+                delete UnitArray[id];
             }
         }
     }
@@ -1770,8 +1757,8 @@ const Main = (() => {
                 log(HexMap)
                 log("State");
                 log(state.MW);
-                log("Units");
-                log(Units)
+                log("UnitArray");
+                log(UnitArray)
                 break;
             case '!ClearState':
                 ClearState(msg);
