@@ -488,6 +488,11 @@ input[type="hidden"][value="Red"].long-status ~ .longinfo h3{
   align-items: center;
   padding: 3px;
 }
+ 
+.enginecrit img{
+    width: 16px;
+    height: 16px;
+}
 
 .fccrit {
   display: grid;

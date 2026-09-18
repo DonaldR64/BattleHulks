@@ -327,7 +327,12 @@
             let mpCrit = parseInt(values.mpcritlevel);
             let wpCrit = parseInt(values.wpcritlevel);
 
-            let engine1 = engineCrit === 1 ? "https://files.d20.io/images/501354284/8g7GBj3vrwxESRkfcoRa5g/thumb.png?1789691985":"https://files.d20.io/images/501354665/YxIXZgyqIHPwfjQ_XVZu3Q/thumb.png?1789692122";
+            let greendot = "https://files.d20.io/images/501354665/YxIXZgyqIHPwfjQ_XVZu3Q/thumb.png?1789692122";
+            let reddot = "https://files.d20.io/images/501354284/8g7GBj3vrwxESRkfcoRa5g/thumb.png?1789691985"
+
+
+
+            let engine1 = engineCrit === 1 ? reddot:greendot;
             let fc1 = fcCrit >= 1 ? "&#128997;":"&#128969;";
             let fc2 = fcCrit >= 2 ? "&#128997;":"&#128969;";
             let fc3 = fcCrit >= 3 ? "&#128997;":"&#128969;";
