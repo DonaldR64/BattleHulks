@@ -117,7 +117,9 @@ section {
     flex-direction: center;
     background-color:  white;
   }
-
+.info h1 {
+  color: darkred
+}
 
 
 
