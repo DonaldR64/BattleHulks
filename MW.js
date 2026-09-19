@@ -1070,7 +1070,7 @@ const Main = (() => {
                 halfToggleY = -halfToggleY;
             }
         }
-        //AddTerrain();    
+        AddTerrain();    
         AddTokens();
         DefineMap();
         let elapsed = Date.now()-startTime;
