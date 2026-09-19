@@ -1041,14 +1041,19 @@ const Main = (() => {
         pageInfo.width = pageInfo.page.get("width") * 70;
         pageInfo.height = pageInfo.page.get("height") * 70;
         pageInfo.type = pageInfo.page.get("grid_type");
+        pageInfo.offset.x = pageInfo.page.get("grid_offset_x");
+        pageInfo.offset.y = pageInfo.page.get("grid_offset_y");
+
+log(pageInfo.page)
+
     }
 
     const BuildMap = () => {
         let startTime = Date.now();
         HexMap = {};
 
-        let startX = HexInfo.pixelStart.x;
-        let startY = HexInfo.pixelStart.y;
+        let startX = HexInfo.pixelStart.x - pageInfo.offset.x;
+        let startY = HexInfo.pixelStart.y - pageInfo.offset.y;
         let halfToggleX = HexInfo.halfToggleX;
         let halfToggleY = HexInfo.halfToggleY;
         if (pageInfo.type === "hex") {
@@ -1070,7 +1075,7 @@ const Main = (() => {
                 halfToggleY = -halfToggleY;
             }
         }
-        AddTerrain();    
+        //AddTerrain();    
         AddTokens();
         DefineMap();
         let elapsed = Date.now()-startTime;
@@ -1115,21 +1120,6 @@ const Main = (() => {
 
     const AddTerrain = () => {
         let start = Date.now();
-        //hills defined by lines
-        let paths = findObjs({_pageid: Campaign().get("playerpageid"),_type: "pathv2",layer: "map",});
-        _.each(paths,path => {
-            let colour = path.get("stroke").toLowerCase();
-            let hill = HillInfo[colour];
-            if (hill) {
-                let height = parseInt(hill.name.replace(/[^\d]/g,""));
-                let vertices = translatePoly(path);
-                let labels = PolyHexes(vertices);
-                _.each(labels,label => {
-                    HexMap[label].elevation = Math.max(HexMap[label].elevation,height);
-                    HexMap[label].hill = true;
-                })
-            }
-        });
 
     
         //Add Token Terrain, Building might be multihex
@@ -1183,31 +1173,6 @@ const Main = (() => {
                 })
             }
 
-            let edgeTerrain = EdgeInfo[name];
-            if (edgeTerrain) {
-                let midPt = new Point(token.get("left"),token.get("top"));
-                //find nearest hex to midPt
-                let hexLabel = midPt.label();
-                //now run through that hexes neighbours and see if midPoint lies between the 2 hexes centres
-                let hex1 = HexMap[hexLabel];
-                let line2 = tokenMidPoints(token);
-                if (hex1) {
-                    let neighbourCubes = hex1.cube.neighbours();
-                    for (let j=0;j<neighbourCubes.length;j++) {
-                        let k = j+3;
-                        if (k> 5) {k-=6};
-                        let hl2 = neighbourCubes[j].label();
-                        let hex2 = HexMap[hl2];
-                        if (!hex2) {continue}
-                        let intersect = lineLine(line2[0],line2[1],hex1.centre,hex2.centre);
-                        if (intersect) {
-                            hex1.edges[DIRECTIONS[j]] = name;
-                            hex2.edges[DIRECTIONS[k]] = name;
-                            break;
-                        }
-                    }
-                }
-            }
         });
     
 
@@ -1298,6 +1263,7 @@ const Main = (() => {
         let layer = (type === "LOS") ? "map":"map";
 
         let page = getObj('page',Campaign().get('playerpageid'));
+        
         if(page) {
             let line = createObj('pathv2',{
                 layer: layer,
@@ -1334,41 +1300,12 @@ const Main = (() => {
         let label = unit.hexLabel;
         let hex = HexMap[label];
         SetupCard(unit.name,"Info",unit.faction);
-        let status = unit.Status();
-        outputCard.body.push("Status: " + status);
 
-        outputCard.body.push("[hr]");
         outputCard.body.push("Hex Label: " + label);
         if (unit.Offmap()) {
             outputCard.body.push("Unit is Off Map");
         }
-        let s = hex.elevation === 1 ? " Storey":" Stories"
-        let elevation = hex.elevation === 0 ? "Ground Level":hex.elevation + s;
-
-        outputCard.body.push("Elevation: " + elevation);
-        outputCard.body.push("Terrain: " + hex.terrain);
-        outputCard.body.push("Movement: " + hex.type);
-        if (hex.terrainHeight > 0) {
-            s = hex.terrainHeight === 1? " Storey":" Stories"
-            outputCard.body.push("Terrain Height: " + hex.terrainHeight + s);
-        }
-        let cover = (hex.cover === true) ? "":"No ";
-        outputCard.body.push("Terrain provides " + cover + "Cover");
-        let concealment = (hex.conceal === true) ? "":"No ";
-        if (hex.conceal === "Infantry") {
-            concealment = "Infantry ";
-        }
-        outputCard.body.push("Terrain provides " + concealment + "Concealment");
-
-        let edgeTerrainTypes = [];
-        _.each(DIRECTIONS,a => {
-            if (hex.edges[a] !== "Open") {
-                outputCard.body.push(a + " Edge: " + hex.edges[a]);
-                if (edgeTerrainTypes.includes(hex.edges[a]) === false) {
-                    edgeTerrainTypes.push(hex.edges[a]);
-                }
-            }
-        })
+        
 
         PrintCard();
     }
