@@ -513,8 +513,8 @@ const Main = (() => {
             return new Cube(this.q * (1.0 - t) + b.q * t, this.r * (1.0 - t) + b.r * t, this.s * (1.0 - t) + b.s * t);
         }
         linedraw(b) {
-            //returns array of hexes between this hex and hex 'b' incl. hex 'b'
-            var N = this.distance(b);
+            //returns array of hexes between this hex and hex 'b' excl. hex 'b'
+            var N = this.distance(b) - 1; //this drops b
             var a_nudge = new Cube(this.q + 1e-06, this.r + 1e-06, this.s - 2e-06);
             var b_nudge = new Cube(b.q + 1e-06, b.r + 1e-06, b.s - 2e-06);
             var results = [];
@@ -762,7 +762,7 @@ const Main = (() => {
        
 
         Distance(b) {
-            return HexMap[this.hexLabel].distance(HexMap[b.hexLabel]);
+            return HexMap[this.hexLabel].distance(HexMap[b.hexLabel]) - 1;
         }
 
 
@@ -1454,8 +1454,7 @@ log(pageInfo.page)
     const LOS = (shooter,target) => {
         let shooterHex = HexMap[shooter.hexLabel];
         let targetHex = HexMap[target.hexLabel];
-        let distance = shooter.Distance(target); //will be distance between
-        //shooter Height, 2 for battlemech, LOS is from this height
+        let distance = shooter.Distance(target) + 1;
         let shooterHeight = shooterHex.elevation;
         if (shooter.type === "BattleMech") {
             shooterHeight += 2;
@@ -1474,26 +1473,21 @@ log(pageInfo.page)
 //each path gets a 2 (LOS), 1 (LOS on one path blocked), 0 (LOS on both paths blocked)
 //work out the final LOS %, adding up the 3 heights divide by 10 to get a fraction
 
+        let interCubes = [shooterHex.cube.linedraw(targetHex.cube),shooterHex.cube.linedraw2(targetHex.cube)];
 
         let pt1 = new Point(0,shooterHeight);
-        let pt2 = new Point(distance,targetHeight);
+    for (let i=0;i<5;i++) {
+        let pt2 = new Point(distance,targetHeights[i]);
         let pt3,pt4,line1;
+        for (let side=0;side<2;side++) {
 
-        let finalLOS = true;
-        let interCoverFinal = 0;
-        let interConcealFinal = 0;
 
-        let finalBlockedHexLabel;
-        let finalLOSReason = "";
- 
-        let interCubes = [shooterHex.cube.linedraw(targetHex.cube),shooterHex.cube.linedraw2(targetHex.cube)];
-        let labels = [interCubes[0].map((e)=> e.label()), interCubes[1].map((e)=> e.label())];
-        let len = labels[0].length;
-        let los = [true,true];
-        let interCover = [false,false];
-        let interConceal = [false,false];
-        let losReason = ["",""];
-        let blockedHexLabels = ["",""]
+
+
+        }
+    }
+
+
 
 
         for (let side=0;side<2;side++) {
