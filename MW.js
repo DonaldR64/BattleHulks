@@ -112,6 +112,16 @@ const Main = (() => {
     //terrain that is single object
 
     const TerrainInfo = {
+        "Hill 1": {elevation: 1, terrainHeight: 0, moveCost: 1, cover: false, blockLOS: "Hill", },
+        "Hill 2": {elevation: 2, terrainHeight: 0, moveCost: 1, cover: false, blockLOS: "Hill", },
+        "Hill 3": {elevation: 3, terrainHeight: 0, moveCost: 1, cover: false, blockLOS: "Hill", },
+        "Light Woods": {elevation: 0, terrainHeight: 2, moveCost: 2, cover: true, blockLOS: "Woods", },
+        "Heavy Woods": {elevation: 0, terrainHeight: 2, moveCost: 3, cover: true, blockLOS: "Woods", },
+        "Rough": {elevation: 0, terrainHeight: 0, moveCost: 2, cover: false, blockLOS: false, },
+
+
+
+
 
     }
 
@@ -1041,8 +1051,8 @@ const Main = (() => {
         pageInfo.width = pageInfo.page.get("width") * 70;
         pageInfo.height = pageInfo.page.get("height") * 70;
         pageInfo.type = pageInfo.page.get("grid_type");
-        pageInfo.offset.x = pageInfo.page.get("grid_offset_x");
-        pageInfo.offset.y = pageInfo.page.get("grid_offset_y");
+        pageInfo.offsetX = pageInfo.page.get("grid_offset_x");
+        pageInfo.offsetY = pageInfo.page.get("grid_offset_y");
 
 log(pageInfo.page)
 
@@ -1052,8 +1062,8 @@ log(pageInfo.page)
         let startTime = Date.now();
         HexMap = {};
 
-        let startX = HexInfo.pixelStart.x - pageInfo.offset.x;
-        let startY = HexInfo.pixelStart.y - pageInfo.offset.y;
+        let startX = HexInfo.pixelStart.x - pageInfo.offsetX;
+        let startY = HexInfo.pixelStart.y - pageInfo.offsetY;
         let halfToggleX = HexInfo.halfToggleX;
         let halfToggleY = HexInfo.halfToggleY;
         if (pageInfo.type === "hex") {
