@@ -1455,17 +1455,27 @@ log(pageInfo.page)
         let shooterHex = HexMap[shooter.hexLabel];
         let targetHex = HexMap[target.hexLabel];
         let distance = shooter.Distance(target); //will be distance between
+        //shooter Height, 2 for battlemech, LOS is from this height
         let shooterHeight = shooterHex.elevation;
         if (shooter.type === "BattleMech") {
             shooterHeight += 2;
         }
-        let targetHeights = {bot: targetHex.elevation};
+        let targetHeights = [targetHex.elevation];
+        //targetHeight, 2 for Battlemechs
+        let th;
         if (target.type === "BattleMech") {
-            targetHeights.mid = targetHex.elevation + 1;
-            targetHeights.top = targetHex.elevation + 2;
+            th = 2;
+        }
+        for (let i=1;i<6;i++) {
+            targetHeights.push(targetHex.elevation + ((th/5)*i));
         }
 
+
+
 /////
+//run shooterHeight -> each of target Heights, running through both paths
+//each path gets a 2 (LOS), 1 (LOS on one path blocked), 0 (LOS on both paths blocked)
+//work out the final LOS %, adding up the 3 heights divide by 10 to get a fraction
 
 
         let pt1 = new Point(0,shooterHeight);
