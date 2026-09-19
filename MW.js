@@ -746,6 +746,9 @@ const Main = (() => {
         }
 
         Facing(b) {
+//rewrite
+
+
             let facing = "Front";
             let phi = Angle(HexMap[this.hexLabel].cube.angle(HexMap[b.hexLabel].cube));
             phi = Angle(phi - this.token.get("rotation"));
