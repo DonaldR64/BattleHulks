@@ -125,12 +125,6 @@ const Main = (() => {
 
     }
 
-    //height is #, corresponds to 1 story per #
-    const HillInfo = {
-        "#000000": {name: "Hill 1"},
-        "#666666": {name: "Hill 2"},
-    }
-
 
 
 
@@ -674,14 +668,8 @@ const Main = (() => {
             this.terrainHeight = 0;
             this.cover = false;
             this.blockLOS = false;
-            this.conceal = false;
-            this.type = "Open";
-            this.edges = {};
-            this.terrainID = "";
-            _.each(DIRECTIONS,a => {
-                this.edges[a] = "Open";
-            });
-
+            this.moveCost = 1;
+            this.road = false;
             HexMap[this.label] = this;
         }
 
@@ -1085,7 +1073,7 @@ log(pageInfo.page)
                 halfToggleY = -halfToggleY;
             }
         }
-        //AddTerrain();    
+        AddTerrain();    
         AddTokens();
         DefineMap();
         let elapsed = Date.now()-startTime;
@@ -1131,7 +1119,6 @@ log(pageInfo.page)
     const AddTerrain = () => {
         let start = Date.now();
 
-    
         //Add Token Terrain, Building might be multihex
         let tokens = findObjs({_pageid: Campaign().get("playerpageid"),_type: "graphic",_subtype: "token",layer: "map",});
 
@@ -1143,50 +1130,37 @@ log(pageInfo.page)
             name = name.split("//")[0].trim();
             let terrain = TerrainInfo[name];
             if (terrain) {
-                let labels = [];
-                if (token.get("width") > 120 || token.get("height") > 120) {
-                    let vertices = tokenVertices(token);
-                    labels = PolyHexes(vertices);
-                } else {
-                    let centre = new Point(token.get("left"),token.get('top'));
-                    labels = [centre.toCube().label()];
-                }
-                _.each(labels,label => {
-                    let hex = HexMap[label];
-                    if (hex) {
-                        if (hex.terrain === "Open") {
-                            hex.terrain = name;
-                        } else {
-                            hex.terrain += ", " + name;
-                        }
-                        hex.terrainHeight = Math.max(terrain.height,hex.terrainHeight);
-                        if (terrain.blockLOS !== false) {
-                            hex.blockLOS = Math.max(hex.blockLOS,terrain.blockLOS);
-                        }
-                        if (terrain.cover === true) {
-                            hex.cover = true;
-                        }
-                        if (terrain.conceal === true) {
-                            hex.conceal = true;
-                        }
-                        if (terrain.conceal === "Infantry" && hex.cover === false) {    
-                            hex.conceal = "Infantry";
-                        }
-                        if (terrain.type === "Difficult" && hex.type === "Open") {
-                            hex.type = "Difficult";
-                        }
-                        if (terrain.type === "Very Difficult") {
-                            hex.type = "Very Difficult";
-                        }
-
+                let centre = new Point(token.get("left"),token.get('top'));
+                let label = centre.toCube().label()
+                let hex = HexMap[label];
+                if (hex) {
+                    if (hex.terrain === "Open" && name.includes("Hill") === false) {
+                        hex.terrain = name;
+                    } else {
+                        hex.terrain += ", " + name;
                     }
-                })
+                    if (terrain.blockLOS !== false) {
+                        if (hex.blockLOS === false) {
+                            hex.blockLOS = terrain.blockLOS;
+                        } else {
+                            hex.blockLOS = hex.blockLOS + ", " + terrain.blockLOS;
+                        }
+                    }
+                    if (terrain.cover === true) {
+                        hex.cover = true;
+                    }
+                    hex.elevation = Math.max(terrain.elevation,hex.elevation);
+                    hex.terrainHeight = Math.max(terrain.terrainHeight,hex.terrainHeight);
+                    hex.moveCost = Math.max(terrain.moveCost,hex.moveCost);
+                }
             }
 
         });
     
-
+/*
         //Roads
+//roads will allow movement to ignore 
+
         _.each(paths,path => {
             if (path.get("stroke").toLowerCase() === "#ffffff") {
                 let vertices = translatePoly(path);
@@ -1205,7 +1179,7 @@ log(pageInfo.page)
                 }
             }   
         })
-
+*/
 
 
         let elapsed = Date.now()-start;
@@ -1314,8 +1288,24 @@ log(pageInfo.page)
         outputCard.body.push("Hex Label: " + label);
         if (unit.Offmap()) {
             outputCard.body.push("Unit is Off Map");
+        } else {
+            outputCard.body.push("Hex Elevation: " + hex.elevation);
+            outputCard.body.push("Terrain: " + hex.terrain);
+            if (hex.terrainHeight > 0) {
+                outputCard.body.push("Terrain Height: " + hex.terrainHeight);
+            }
+
+            outputCard.body.push("Move Cost: " + hex.moveCost);
+            if (hex.blockLOS !== false) {
+                outputCard.body.push("Affects LOS as " + hex.blockLOS);
+            }
+            if (hex.cover === true) {
+                outputCard.body.push("Hex gives Cover");
+            }
         }
-        
+
+
+
 
         PrintCard();
     }
