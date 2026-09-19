@@ -1454,16 +1454,20 @@ log(pageInfo.page)
     const LOS = (shooter,target) => {
         let shooterHex = HexMap[shooter.hexLabel];
         let targetHex = HexMap[target.hexLabel];
-        let distance = shooter.Distance(target);
-      
+        let distance = shooter.Distance(target); //will be distance between
         let shooterHeight = shooterHex.elevation;
-        if (shooterHex.terrain.includes("2 Storey") && Infantry.includes(shooter.type)) {
-            shooterHeight += 1;
+        if (shooter.type === "BattleMech") {
+            shooterHeight += 2;
         }
-        let targetHeight = targetHex.elevation;
-        if (targetHex.terrain.includes("2 Storey") && Infantry.includes(target.type)) {
-            targetHeight += 1;
+        let targetHeights = {bot: targetHex.elevation};
+        if (target.type === "BattleMech") {
+            targetHeights.mid = targetHex.elevation + 1;
+            targetHeights.top = targetHex.elevation + 2;
         }
+
+/////
+
+
         let pt1 = new Point(0,shooterHeight);
         let pt2 = new Point(distance,targetHeight);
         let pt3,pt4,line1;
