@@ -1470,9 +1470,6 @@ log(pageInfo.page)
             targetHeights.push(targetHex.elevation + ((th/5)*i));
         }
 
-
-
-/////
 //run shooterHeight -> each of target Heights, running through both paths
 //each path gets a 2 (LOS), 1 (LOS on one path blocked), 0 (LOS on both paths blocked)
 //work out the final LOS %, adding up the 3 heights divide by 10 to get a fraction
